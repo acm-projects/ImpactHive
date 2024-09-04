@@ -121,3 +121,9 @@ ImpactHive revolutionizes impact investing by allowing you to set meaningful goa
   **Back-end**
   - [Node.js Crash Course](https://www.youtube.com/watch?v=32M1al-Y6Ag)
   - [MongoDB Crash Course](https://www.youtube.com/watch?v=ofme2o29ngU)
+
+ # Meet the Team 😄
+  * Developers: Ishita Saran, Ifrah Zainab, Eric Tran, Phuc Tran, Aidan Valva
+  * Project Manager: Avanthi Reddy
+  * Industry Mentor: Linh Ly
+
