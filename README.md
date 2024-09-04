@@ -1,5 +1,6 @@
+<img src="https://ssir.org/images/blog/Lamy-Leijonhufvud-ODonohoe-next-decade-impact-invest-592x444.jpg" width="1224" height="688">
 
-# ImpactHIve ⭐
+# ImpactHive ⭐
 
 ImpactHive revolutionizes impact investing by allowing you to set meaningful goals like education equity and carbon footprint reduction. Users are able to track their progress with intuitive dashboards, discover and connect with impactful organizations, and stay motivated through gamification elements. Invest with impact and watch your positive influence grow!
 
