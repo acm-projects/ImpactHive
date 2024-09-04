@@ -116,7 +116,7 @@ ImpactHive revolutionizes impact investing by allowing you to set meaningful goa
   **Front-end**
   - [Introduction to Wireframing in Figma](https://www.youtube.com/watch?v=6t_dYhXyYjI)
   - [27 Best UI/UX Practices](https://729solutions.com/ux-ui-best-practices/)
-  - [React Crash Course] (https://www.youtube.com/watch?v=LDB4uaJ87e0)
+  - [React Crash Course](https://www.youtube.com/watch?v=LDB4uaJ87e0)
   
   **Back-end**
   - [Node.js Crash Course](https://www.youtube.com/watch?v=32M1al-Y6Ag)
