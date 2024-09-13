@@ -104,6 +104,7 @@ ImpactHive revolutionizes impact investing by allowing you to set meaningful goa
   - [Figma](https://www.figma.com/downloads/)
   - [Android Studio](https://developer.android.com/studio/install)
   - [React](https://reactnative.dev/)
+  - [Expo](https://expo.dev/)
   - [Node.js](https://nodejs.org/en)
   - [MongoDB Documentation](https://www.mongodb.com/docs/) / [More Documentation](https://nodejs.org/en/download/)
   - [Git](https://git-scm.com/downloads)
