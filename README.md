@@ -7,17 +7,21 @@ ImpactHive revolutionizes impact investing by allowing you to set meaningful goa
 # MVP 🏆
 
 * User authentication: username, email, password
-* Organization search: being able to find organizations to invest in by search
-* Messaging: reach out to the organizations
-* Dashboard: have dashboards to see progress in terms of how they’re achieving their goals
-* Games/Incentives: gamification elements to motivate users to invest in social causes 
+* Organization search: being able to find organizations to invest in by search; provide description of the organization
+* Explore Feature: discover new features 
+* Dashboard: have dashboards to see progress in terms of how they’re achieving their goals (graphs)
+* Games/Incentives: gamification elements to motivate users to invest in social causes (streaks, badges, competitions, boss event)
+* Bee Hive: track growth 
 * Suggestions: recommend projects to users based on their interests, past investments, and goals
 
 # Stretch Goals ⏳
 
-* Community groups based on interests 
-* Being able to invest through the app itself and not reaching out to the investor and updating the information manually (regarding their investment) 
-* Educational material, resources, etc. 
+* Community groups based on interests
+* Messaging: reach out to the organizations
+* Being able to invest through the app itself and not reaching out to the investor and updating the information manually (regarding their investment)
+* Chatbot to ask questions 
+* Educational material, resources, etc.
+* Quizzes (relate to the game/incentive components) 
 
 # Milestones 🚀
 
@@ -88,7 +92,7 @@ ImpactHive revolutionizes impact investing by allowing you to set meaningful goa
 
 * Wireframing: Figma
 * IDE: Android Studio
-* Frontend: React
+* Frontend: React Native
   * For building a responsive and dynamic user interface
 * Backend: Node.js
   * For building scalable applications
@@ -99,7 +103,7 @@ ImpactHive revolutionizes impact investing by allowing you to set meaningful goa
 
   - [Figma](https://www.figma.com/downloads/)
   - [Android Studio](https://developer.android.com/studio/install)
-  - [React](https://react.dev/)
+  - [React](https://reactnative.dev/)
   - [Node.js](https://nodejs.org/en)
   - [MongoDB Documentation](https://www.mongodb.com/docs/) / [More Documentation](https://nodejs.org/en/download/)
   - [Git](https://git-scm.com/downloads)
