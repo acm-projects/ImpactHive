@@ -123,7 +123,7 @@ ImpactHive revolutionizes impact investing by allowing you to set meaningful goa
   - [MongoDB Crash Course](https://www.youtube.com/watch?v=ofme2o29ngU)
 
  # Meet the Team 😄
-  * Developers: Ishita Saran, Ifrah Zainab, Eric Tran, Phuc Tran, Aidan Valva
+  * Developers: Ishita Saran (Full-Stack with Back-end Focus), Ifrah Zainab (Full-Stack), Eric Tran (Frontend), Phuc Tran (Backend), Aidan Valva (Frontend)
   * Project Manager: Avanthi Reddy
   * Industry Mentor: Linh Ly
 
