@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     paddingRight: 30,
   },
   title: {
-    fontSize: 67,
+    fontSize: 50,
     flexDirection: 'column',
     paddingLeft: 28,
     alignItems: 'center',
