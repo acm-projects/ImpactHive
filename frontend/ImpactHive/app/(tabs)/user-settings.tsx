@@ -12,108 +12,101 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function Example() {
   return (
-    <SafeAreaView style={{ flex:1 ,backgroundColor: '#FFF7D3' }}>
-      
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
       <View style={styles.backArrow}>
-      <Feather name="arrow-left" size={45} color="black" />
-
+        <Feather name="arrow-left" size={45} color="black" />
         <Text style={styles.title}>Settings</Text>
       </View>
-      
-      <View style={styles.profile}>
-          <View style={styles.profileAvatarWrapper}>
-          <Image
-          source={require('@/assets/images/profileIcon.png')}
-            />
-          </View>
 
-        
+      <View style={styles.profile}>
+        <View style={styles.profileAvatarWrapper}>
+          <Image
+            source={require('@/assets/images/profileIcon.png')}
+          />
+        </View>
       </View>
 
-        <View style={styles.section}>
-
-          <TouchableOpacity
-            onPress={() => {
-              // handle onPress
-            }}
-            style={styles.row}>
-            <View style={styles.rowIcon}>
+      <View style={styles.section}>
+        {/* Account Row */}
+        <TouchableOpacity
+          onPress={() => {
+            // handle onPress
+          }}
+          style={styles.row}
+        >
+          <View style={styles.rowIcon}>
             <FontAwesome name="user-circle-o" size={24} color="black" />
-            </View>
-            <Text style={styles.rowLabel}>Account</Text>
-            <View style={styles.rowSpacer} />
-          </TouchableOpacity>
+          </View>
+          <Text style={styles.rowLabel}>Account</Text>
+          <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => {
-              // handle onPress
-            }}
-            style={styles.row}>
-            <View style={styles.rowIcon}>
+        {/* Notifications Row */}
+        <TouchableOpacity
+          onPress={() => {
+            // handle onPress
+          }}
+          style={styles.row}
+        >
+          <View style={styles.rowIcon}>
             <Feather name="bell" size={24} color="black" />
-            </View>
-            
-            <Text style={styles.rowLabel}>Notifications</Text>
+          </View>
+          <Text style={styles.rowLabel}>Notifications</Text>
+          <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
+        </TouchableOpacity>
 
-            <View style={styles.rowSpacer} />
-
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              // handle onPress
-            }}
-
-            style={styles.row}>
-            <View style={styles.rowIcon}>
+        {/* Appearance Row */}
+        <TouchableOpacity
+          onPress={() => {
+            // handle onPress
+          }}
+          style={styles.row}
+        >
+          <View style={styles.rowIcon}>
             <Feather name="eye" size={24} color="black" />
-            </View>
+          </View>
+          <Text style={styles.rowLabel}>Appearance</Text>
+          <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
+        </TouchableOpacity>
 
-            <Text style={styles.rowLabel}>Appearance</Text>
-            <View style={styles.rowSpacer} />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              // handle onPress
-            }}
-            style={styles.row}>
-            <View style={styles.rowIcon}>
+        {/* Privacy and Security Row */}
+        <TouchableOpacity
+          onPress={() => {
+            // handle onPress
+          }}
+          style={styles.row}
+        >
+          <View style={styles.rowIcon}>
             <Feather name="shield" size={24} color="black" />
-            </View>
+          </View>
+          <Text style={styles.rowLabel}>Privacy and Security</Text>
+          <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
+        </TouchableOpacity>
 
-            <Text style={styles.rowLabel}>Privacy and Security</Text>
-
-            <View style={styles.rowSpacer} />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-            onPress={() => {
-              // handle onPress
-            }}
-            style={styles.row}>
-            <View style={styles.rowIcon}>
+        {/* About Row */}
+        <TouchableOpacity
+          onPress={() => {
+            // handle onPress
+          }}
+          style={styles.row}
+        >
+          <View style={styles.rowIcon}>
             <Feather name="alert-circle" size={24} color="black" />
-            </View>
+          </View>
+          <Text style={styles.rowLabel}>About</Text>
+          <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
+        </TouchableOpacity>
 
-            <Text style={styles.rowLabel}>About</Text>
-            <View style={styles.rowArrow}>
-            <Feather name="chevron-right" size={24} color="black" />
-            </View>
-            <View style={styles.rowSpacerFinal} />
-            
-
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              // handle onPress
-            }}
-            style={styles.logOut}>
-            <Text style={styles.logLabel}>Log Out</Text>
-
-          </TouchableOpacity>
-        </View>
+        {/* Log Out Button */}
+        <TouchableOpacity
+          onPress={() => {
+            // handle onPress
+          }}
+          style={styles.logOut}
+        >
+          <Text style={styles.logLabel}>Log Out</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -122,16 +115,14 @@ const styles = StyleSheet.create({
   backArrow: {
     paddingLeft: 20,
     flexDirection: 'row',
-    paddingRight: 30,   
-    },
-  /** Profile */
+    paddingRight: 30,
+  },
   title: {
-        fontSize: 67,
-        flexDirection: 'column',
-        paddingLeft: 28,
-        alignItems: 'center',
-        color: 'black',
-        
+    fontSize: 67,
+    flexDirection: 'column',
+    paddingLeft: 28,
+    alignItems: 'center',
+    color: 'black',
   },
   profile: {
     flexDirection: 'row',
@@ -155,16 +146,13 @@ const styles = StyleSheet.create({
     color: '#414d63',
     textAlign: 'center',
   },
-
-  /** Section */
   section: {
     padding: 25,
   },
-  /** Row */
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between', 
     height: 50,
     backgroundColor: '#fdf8e1',
     borderRadius: 8,
@@ -188,16 +176,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   rowArrow: {
-    alignItems: 'flex-end',
-    opacity: 30,
-  },
-  rowSpacer: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
-  },
-  rowSpacerFinal: {
-    marginTop: 10,
+    marginLeft: 'auto',
   },
   logOut: {
     flexDirection: 'column',
@@ -217,6 +196,5 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     fontWeight: '400',
     color: 'red',
-    
   },
 });
