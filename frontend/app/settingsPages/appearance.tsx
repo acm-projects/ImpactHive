@@ -17,7 +17,8 @@ export default function Example() {
   const [form, setForm] = useState({
     darkMode: false,
     boldText: false, 
-    reducedMotion: false, 
+    reducedMotion: false,
+    allowDaily: false,
   });
 
   return (
@@ -58,8 +59,8 @@ export default function Example() {
         <View style={styles.row}>
           <Text style={styles.rowLabel}>Allow Daily Reminders</Text>
           <Switch
-            onValueChange={value => setForm({ ...form, reducedMotion: value })}
-            value={form.reducedMotion}
+            onValueChange={value => setForm({ ...form, allowDaily: value })}
+            value={form.allowDaily}
           />
         </View>
         

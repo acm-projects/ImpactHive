@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     width: '80%', 
     marginBottom: 10,
+
     elevation: 3, 
   },
   dropdownToggle: {
@@ -169,6 +170,8 @@ const styles = StyleSheet.create({
     color: 'gray', // Slightly gray color
     fontWeight: 'normal', // Not bolded
     opacity: 0.7, // Less opacity
+    width: 'auto',
+    height: 'auto',
   },
   chevron: {
     position: 'absolute', // Position chevron absolutely

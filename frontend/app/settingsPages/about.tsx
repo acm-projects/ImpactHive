@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     padding: 15,
     marginTop: 20,
-    alignSelf: 'center', // Center the card horizontally
+    alignSelf: 'center', 
   },
   cardText: {
     fontSize: 17,

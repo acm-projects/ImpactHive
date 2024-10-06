@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   StyleSheet,
   SafeAreaView,
@@ -6,9 +6,12 @@ import {
   Text,
   TouchableOpacity,
   Image,
-} from 'react-native';
-import Feather from '@expo/vector-icons/Feather';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+} from 'react-native'
+import {
+  Link
+} from 'expo-router'
+import Feather from '@expo/vector-icons/Feather'
+import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 export default function Example() {
   return (
@@ -28,11 +31,9 @@ export default function Example() {
 
       <View style={styles.section}>
         {/* Account Row */}
+        <Link href="../settingsPages/account" asChild>
         <TouchableOpacity
-          onPress={() => {
-            // handle onPress
-          }}
-          style={styles.row}
+            style={styles.row}
         >
           <View style={styles.rowIcon}>
             <FontAwesome name="user-circle-o" size={24} color="black" />
@@ -40,12 +41,12 @@ export default function Example() {
           <Text style={styles.rowLabel}>Account</Text>
           <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
         </TouchableOpacity>
+        </Link>
+
 
         {/* Notifications Row */}
+        <Link href="../settingsPages/notifications" asChild>
         <TouchableOpacity
-          onPress={() => {
-            // handle onPress
-          }}
           style={styles.row}
         >
           <View style={styles.rowIcon}>
@@ -54,12 +55,11 @@ export default function Example() {
           <Text style={styles.rowLabel}>Notifications</Text>
           <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
         </TouchableOpacity>
+        </Link>
 
         {/* Appearance Row */}
+        <Link href="../settingsPages/appearance" asChild>
         <TouchableOpacity
-          onPress={() => {
-            // handle onPress
-          }}
           style={styles.row}
         >
           <View style={styles.rowIcon}>
@@ -68,12 +68,11 @@ export default function Example() {
           <Text style={styles.rowLabel}>Appearance</Text>
           <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
         </TouchableOpacity>
+        </Link>
 
         {/* Privacy and Security Row */}
+        <Link href="../settingsPages/nothing" asChild>
         <TouchableOpacity
-          onPress={() => {
-            // handle onPress
-          }}
           style={styles.row}
         >
           <View style={styles.rowIcon}>
@@ -82,30 +81,27 @@ export default function Example() {
           <Text style={styles.rowLabel}>Privacy and Security</Text>
           <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
         </TouchableOpacity>
+        </Link>
 
         {/* About Row */}
-        <TouchableOpacity
-          onPress={() => {
-            // handle onPress
-          }}
-          style={styles.row}
-        >
+        <Link href="../settingsPages/about" asChild>
+        <TouchableOpacity style={styles.row}>
           <View style={styles.rowIcon}>
             <Feather name="alert-circle" size={24} color="black" />
           </View>
           <Text style={styles.rowLabel}>About</Text>
           <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
         </TouchableOpacity>
+        </Link>
 
         {/* Log Out Button */}
+        <Link href="../settingsPages/about" asChild>
         <TouchableOpacity
-          onPress={() => {
-            // handle onPress
-          }}
           style={styles.logOut}
         >
           <Text style={styles.logLabel}>Log Out</Text>
         </TouchableOpacity>
+        </Link>
       </View>
     </SafeAreaView>
   );
