@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -6,12 +6,20 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get('window'); // Get screen width
 
 export default function CompanyPage() {
+  const [isWatchlisted, setIsWatchlisted] = useState(false);
+  const [plValue, setPlValue] = useState(-0.09);// Example P/L value; change as needed
+
+  const handleWatchlistToggle = () => {
+    setIsWatchlisted((prevStatus) => !prevStatus);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Back Arrow */}
@@ -22,26 +30,62 @@ export default function CompanyPage() {
       {/* Company Name */}
       <Text style={styles.title}>Calvert Capital</Text>
 
-      {/* Ticker, P/L, Tags */}
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>Ticker</Text>
-        <Text style={styles.plText}>(+0.09%)</Text>
-        <View style={[styles.tag, { borderColor: '#D4A373' }]}>
-          <Text style={styles.tagText}>Tag1</Text>
+      {/* Ticker/P&L Group */}
+      <View style={styles.infoRow}>
+        <View style={styles.tickerContainer}>
+          <Text style={styles.subtitle}>Ticker</Text>
+          <Text style={[styles.plText, { color: plValue < 0 ? 'red' : '#4CAF50' }]}>
+            {` ${plValue >= 0 ? '+' : ''}${plValue}%`}
+          </Text>
         </View>
-        <View style={[styles.tag, { borderColor: '#719ECE' }]}>
-          <Text style={styles.tagText}>Tag2</Text>
-        </View>
+
+        {/* Scrollable Tags Group */}
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          style={styles.scrollView}
+          contentContainerStyle={styles.tagsContentContainer} // Apply content container style
+        >
+          <View style={styles.tagsContainer}>
+            <View style={[styles.tag, { borderColor: '#D4A373' }]}>
+              <Text style={styles.tagText}>Tag1</Text>
+            </View>
+            <View style={[styles.tag, { borderColor: '#719ECE' }]}>
+              <Text style={styles.tagText}>Tag2</Text>
+            </View>
+            <View style={[styles.tag, { borderColor: '#D4A373' }]}>
+              <Text style={styles.tagText}>Tag3</Text>
+            </View>
+            <View style={[styles.tag, { borderColor: '#719ECE' }]}>
+              <Text style={styles.tagText}>Tag4</Text>
+            </View>
+            {/* Add more tags if needed */}
+          </View>
+        </ScrollView>
       </View>
 
       {/* Add to Watchlist Button */}
-      <TouchableOpacity style={styles.watchlistButton}>
-        <Text style={styles.buttonText}>Add to Watchlist</Text>
+      <TouchableOpacity
+        style={[
+          styles.watchlistButton,
+          {
+            backgroundColor: isWatchlisted ? '#FFD700' : '#D3D3D3',
+            borderColor: isWatchlisted ? '#DDB839' : 'black',
+          },
+        ]}
+        onPress={handleWatchlistToggle}
+      >
+        <View style={styles.icon}>
+          <Feather name="bookmark" size={12} color="black" />
+        </View>
+        <Text style={styles.smallButtonText}>
+          {isWatchlisted ? ' Watchlisted' : ' Watchlist'}
+        </Text>
       </TouchableOpacity>
 
       {/* Empty Card */}
-      <View style={styles.emptyCard}>
-        <Text style={styles.emptyCardText}>Chart Placeholder</Text>
+      <View style={styles.chartCard}>
+        <Text>Chart Placeholder</Text>
       </View>
 
       {/* Contact Info and News Cards */}
@@ -49,14 +93,26 @@ export default function CompanyPage() {
         {/* Contact Info Card */}
         <View style={styles.infoCard}>
           <Text style={styles.infoTitle}>Contact Info</Text>
-          <Text>800-800-8000</Text>
-          <Text>yup@yup.com</Text>
-          <Text>Mailing Address</Text>
+          <View style={styles.infoRow}>
+            <Feather name="phone" size={24} color="black" />
+            <Text> Phone Number</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Feather name="mail" size={24} color="black" />
+            <Text> Email</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Feather name="map-pin" size={24} color="black" />
+            <Text> Mailing Address</Text>
+          </View>
         </View>
 
         {/* News Card */}
         <View style={styles.newsCard}>
           <Text style={styles.infoTitle}>News</Text>
+          <View style={styles.shareIconContainer}>
+            <Feather name="share" size={24} color="black" />
+          </View>
         </View>
       </View>
 
@@ -77,36 +133,53 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF7D3',
-    paddingHorizontal: 20,
-    paddingTop: 40,
   },
   backArrow: {
-    marginBottom: 20,
+    paddingHorizontal: 15,
+    paddingTop: 15,
   },
   title: {
-    fontSize: 32,
+    fontSize: 50,
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
-  subtitleContainer: {
+  infoRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  tickerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginLeft: 45,
   },
   subtitle: {
     fontSize: 18,
+    alignItems: 'center',
     color: 'black',
   },
   plText: {
     fontSize: 18,
-    color: '#4CAF50',
+  },
+  scrollView: {
+    maxWidth: width * 0.45,
+    marginLeft: 20,
+  },
+  tagsContentContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  tagsContainer: {
+    flexDirection: 'row',
+    paddingRight: 10,
   },
   tag: {
     borderWidth: 2,
-    padding: 5,
+    paddingHorizontal: 5,
+    paddingVertical: 1,
     borderRadius: 5,
     marginLeft: 5,
   },
@@ -114,51 +187,68 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   watchlistButton: {
-    backgroundColor: '#FFD700',
-    paddingVertical: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  emptyCard: {
-    width: '100%',
-    height: 200,
-    backgroundColor: '#F5F5DC',
+    paddingVertical: 1,
+    paddingHorizontal: 12,
     borderRadius: 10,
     borderWidth: 2,
+    alignSelf: 'flex-start',
+    marginLeft: 45,
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    flexDirection: 'row',
+    marginTop: 2,
+    width: 'auto',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  smallButtonText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  chartCard: {
+    height: '32%',
+    marginHorizontal: 20,
+    backgroundColor: '#F5F5DC',
+    borderRadius: 10,
+    borderWidth: 3,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
   },
-  emptyCardText: {
-    fontSize: 20,
-    color: 'black',
-  },
   infoContainer: {
     flexDirection: 'row',
+    marginHorizontal: 20,
     justifyContent: 'space-between',
     marginBottom: 20,
   },
   infoCard: {
-    width: '35%',
+    width: '40%',
+    height: 175,
     backgroundColor: '#F5F5DC',
     borderRadius: 10,
-    borderWidth: 2,
+    borderWidth: 3,
     borderColor: 'black',
     padding: 10,
   },
   newsCard: {
     width: '55%',
+    height: 175,
     backgroundColor: '#F5F5DC',
     borderRadius: 10,
-    borderWidth: 2,
+    borderWidth: 3,
     borderColor: 'black',
     padding: 10,
+    position: 'relative',
+  },
+  shareIconContainer: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
   },
   infoTitle: {
     fontSize: 16,
@@ -168,20 +258,30 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginTop: 20,
   },
   buyButton: {
-    width: '45%',
+    width: '40%',
     backgroundColor: '#FFD700',
     paddingVertical: 15,
-    borderRadius: 5,
+    borderRadius: 10,
+    borderWidth: 3,
+    borderColor: '#DDB839',
     alignItems: 'center',
+    marginLeft: 20,
   },
   sellButton: {
-    width: '45%',
+    width: '40%',
     backgroundColor: '#FFD700',
     paddingVertical: 15,
-    borderRadius: 5,
     alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 3,
+    borderColor: '#DDB839',
+    marginRight: 20,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
