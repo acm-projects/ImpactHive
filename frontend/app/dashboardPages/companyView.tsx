@@ -7,6 +7,9 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
+  Modal,
+  TextInput,
+  Animated,
 } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 
@@ -14,10 +17,39 @@ const { width } = Dimensions.get('window'); // Get screen width
 
 export default function CompanyPage() {
   const [isWatchlisted, setIsWatchlisted] = useState(false);
-  const [plValue, setPlValue] = useState(-0.09);// Example P/L value; change as needed
+  const [plValue, setPlValue] = useState(-0.09); // Example P/L value; change as needed
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalType, setModalType] = useState(''); // 'buy' or 'sell'
+  const [inputValue, setInputValue] = useState('');
+  const [fadeAnim] = useState(new Animated.Value(0)); // Initial fade value
 
   const handleWatchlistToggle = () => {
     setIsWatchlisted((prevStatus) => !prevStatus);
+  };
+
+  const handleBuySellPress = (type) => {
+    setModalType(type);
+    setModalVisible(true);
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const closeModal = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(() => {
+      setModalVisible(false);
+      setInputValue('');
+    });
+  };
+
+  const handleInputChange = (value) => {
+    setInputValue(value);
   };
 
   return (
@@ -59,7 +91,9 @@ export default function CompanyPage() {
             <View style={[styles.tag, { borderColor: '#719ECE' }]}>
               <Text style={styles.tagText}>Tag4</Text>
             </View>
-            {/* Add more tags if needed */}
+            <View style={[styles.tag, { borderColor: '#719ECE' }]}>
+              <Text style={styles.tagText}>Tag5</Text>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -83,7 +117,7 @@ export default function CompanyPage() {
         </Text>
       </TouchableOpacity>
 
-      {/* Empty Card */}
+      {/* Chart Card */}
       <View style={styles.chartCard}>
         <Text>Chart Placeholder</Text>
       </View>
@@ -118,13 +152,48 @@ export default function CompanyPage() {
 
       {/* Buy and Sell Buttons */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.buyButton}>
+        <TouchableOpacity
+          style={styles.buyButton}
+          onPress={() => handleBuySellPress('buy')}
+        >
           <Text style={styles.buttonText}>Buy</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.sellButton}>
+        <TouchableOpacity
+          style={styles.sellButton}
+          onPress={() => handleBuySellPress('sell')}
+        >
           <Text style={styles.buttonText}>Sell</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Modal for Buy/Sell */}
+      {modalVisible && (
+        <Modal transparent visible={modalVisible} animationType="none">
+          <Animated.View style={[styles.modalBackground, { opacity: fadeAnim }]}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>
+                {modalType === 'buy' ? 'Buy:' : 'Sell:'}
+              </Text>
+              <TextInput
+                style={styles.input}
+                keyboardType="numeric"
+                placeholder={`Enter ${modalType === 'buy' ? 'cost or shares' : 'shares'}...`}
+                value={inputValue}
+                onChangeText={handleInputChange}
+              />
+              {/* Button Container */}
+              <View style={styles.modalButtonContainer}>
+                <TouchableOpacity style={styles.cancelButton} onPress={closeModal}>
+                  <Text style={styles.modalButtonText}>Cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.confirmButton} onPress={closeModal}>
+                  <Text style={styles.modalButtonText}>Confirm</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Animated.View>
+        </Modal>
+      )}
     </SafeAreaView>
   );
 }
@@ -187,7 +256,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   watchlistButton: {
-    paddingVertical: 1,
+    paddingBottom: 1,
     paddingHorizontal: 12,
     borderRadius: 10,
     borderWidth: 2,
@@ -283,5 +352,68 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  modalBackground: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#FDF8E1',
+    padding: 20,
+    flexDirection: 'column',
+    borderRadius: 10,
+    width: '80%',
+    borderWidth: 4,
+    borderColor: "#C2C0B2",
+  },
+  modalTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginLeft: 12,
+    marginBottom: 20,
+    justifyContent: 'flex-start',
+  },
+  input: {
+    borderWidth: 3,
+    borderColor: '#C2C0B2',
+    borderRadius: 10,
+    padding: 10,
+    marginHorizontal:10,
+    width: '90%',
+    marginBottom: 20,
+  },
+  modalButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 10,
+    paddingHorizontal: 10,
+  },
+  cancelButton: {
+    backgroundColor: '#FDF8E1',
+    width: '43%',
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 3,
+    borderColor: '#C2C0B2',
+  },
+  confirmButton: {
+    backgroundColor: '#FDF8E1',
+    width: '43%',
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 3,
+    marginRight: 10,
+    borderColor: '#C2C0B2',
+  },
+  modalButtonText: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
+    alignContent: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
   },
 });
