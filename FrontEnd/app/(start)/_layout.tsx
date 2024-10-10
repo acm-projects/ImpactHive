@@ -7,7 +7,8 @@ SplashScreen.preventAutoHideAsync()
 
 const StartLayout = () => {
   const [fontsLoaded, error] = useFonts({
-    'SpaceMono': require('../../assets/fonts/SpaceMono-Regular.ttf')
+    'SpaceMono': require('../../assets/fonts/SpaceMono-Regular.ttf'),
+    'Trocchi': require('../../assets/fonts/Trocchi-Regular.ttf')
   })
   
   useEffect(() => {

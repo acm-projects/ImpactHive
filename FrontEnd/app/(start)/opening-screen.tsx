@@ -11,17 +11,19 @@ const OpeningScreen = () => {
         <TouchableOpacity>
             <Link href="/(start)/log-in" asChild>
                 <Pressable style = {styles.Button}>
-                    <Text>Log-In</Text>
+                    <Text style = {styles.font}>Login</Text>
                 </Pressable>
             </Link>
         </TouchableOpacity>
-        <Link href="/(start)/sign-up" asChild>
-            <Pressable style = {styles.Button2}>
-                <Text>Sign-Up</Text>
-            </Pressable>
-        </Link>
+
+        <TouchableOpacity>
+            <Link href="/(start)/sign-up" asChild>
+                <Pressable style = {styles.Button2}>
+                    <Text style = {styles.font}>Sign Up</Text>
+                </Pressable>
+            </Link>
+        </TouchableOpacity>
         <Link href="/(tabs)/home" style ={styles.bottomText}> Go to Home Screen </Link>
-        {/* <Link href="/(tabs)/home" style ={styles.bottomText}> Go to Next Screen </Link> */}
     </View>
   )
 }
@@ -46,11 +48,12 @@ const styles = StyleSheet.create({
     Button2: {
         backgroundColor: "#FBD143",
         paddingVertical: 15,
-        paddingHorizontal: 145,
+        paddingHorizontal: 142,
         borderRadius: 10,
         margin: 10,
         borderColor: "black",
         borderWidth: 2,
+        
     },
     ButtonPress: {
         backgroundColor: "#FBD143",
@@ -65,15 +68,14 @@ const styles = StyleSheet.create({
     font: {
         color: "black",
         fontSize: 20,
-        fontFamily: "SpaceMono",
-        fontWeight: "bold",
+        fontFamily: "Trochi",
     },
     bottomText: {
-        position: 'absolute',  // Position the text absolutely within the View
-        bottom: 20,  // Distance from the bottom of the screen
+        position: 'absolute', 
+        bottom: 20, 
         left: 0,
         right: 0,
-        textAlign: 'center',  // Center the text horizontally
+        textAlign: 'center', 
         fontSize: 20,
         fontWeight: 'bold',
         color: 'blue',
