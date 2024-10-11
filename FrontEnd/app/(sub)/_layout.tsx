@@ -37,6 +37,11 @@ const SubLayout = () => {
                 options = {{
                     headerShown:false,
                     title: 'Watch List'}}/>
+                <Stack.Screen
+                name = "badges-sub"
+                options = {{
+                    headerShown:false,
+                    title: 'BadgesSub'}}/>
         </Stack>
     )
 }

@@ -14,5 +14,4 @@ npm-debug.*
 web-build/
 expo-env.d.ts
 .DS_Store
-
 # @end expo-cli

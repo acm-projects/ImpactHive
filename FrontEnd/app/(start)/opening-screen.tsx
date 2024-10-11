@@ -18,7 +18,7 @@ const OpeningScreen = () => {
 
         <TouchableOpacity>
             <Link href="/(start)/sign-up" asChild>
-                <Pressable style = {styles.Button2}>
+                <Pressable onPress={() => {}} style = {styles.Button2}>
                     <Text style = {styles.font}>Sign Up</Text>
                 </Pressable>
             </Link>

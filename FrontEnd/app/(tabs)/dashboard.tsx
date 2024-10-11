@@ -2,6 +2,7 @@ import { FlatList, Animated, Dimensions, StyleSheet, SafeAreaView, View, Text } 
 import React from 'react'
 import * as Progress from 'react-native-progress';
 import PieChart from 'react-native-pie-chart'
+//import { PieChart } from '@mui/x-charts/PieChart';
 
 interface ItemProps {
   key: string;

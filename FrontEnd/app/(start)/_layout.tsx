@@ -41,15 +41,10 @@ const StartLayout = () => {
                 headerShown:false,
                 title: 'Goal'}}/>
             <Stack.Screen
-            name = "goal"
+            name = "opening-interests"
             options = {{
                 headerShown:false,
-                title: 'Goal'}}/>
-            <Stack.Screen
-            name = "interests"
-            options = {{
-                headerShown:false,
-                title: 'Interests'}}/>
+                title: 'Opening Interests'}}/>
         </Stack>
   )
   
