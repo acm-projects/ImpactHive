@@ -6,6 +6,7 @@ const Index = () => {
     //return <Redirect href="/(sub)/badges" />;
     //return <Redirect href="/(start)/opening-interests" />;
     //return <Redirect href = "/(start)/goal" />;
-    return <Redirect href = "/(sub)/watch-list" />;
+    //return <Redirect href = "/(sub)/watch-list" />;
+    return <Redirect href = "/(sub)/interests" />;
 };
 export default Index;
