@@ -17,7 +17,7 @@ const SLIDER_DATA = [
     tag: 'tag 1',
   },
   {
-    key: '2',
+    key: '2', 
     title: 'Company 2',
     tag: 'tag 1',
   },
