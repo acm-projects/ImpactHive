@@ -4,6 +4,8 @@ import React from 'react';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import FontAwesome from '@expo/vector-icons/FontAwesome'
+
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -34,6 +36,17 @@ export default function TabLayout() {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name="account"
+        options={{
+          title: 'Account',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="user-circle-o" size={28} color={color} />
+          ),
+        }}
+      />
+
     </Tabs>
   );
 }

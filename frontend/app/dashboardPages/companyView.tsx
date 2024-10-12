@@ -366,7 +366,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     borderRadius: 10,
     width: '80%',
-    borderWidth: 4,
+    borderWidth: 3,
     borderColor: "#C2C0B2",
   },
   modalTitle: {

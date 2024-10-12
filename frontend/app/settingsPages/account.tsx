@@ -124,8 +124,9 @@ const styles = StyleSheet.create({
     width: width,
     height: height, 
     position: 'absolute', 
-    top: -20,       
-    left: 0,        
+    top: 0,       
+    left: 0,    
+    backgroundColor: "#FFF7D3"    
   },
   container: {
     flex: 1,  
@@ -172,6 +173,7 @@ const styles = StyleSheet.create({
     opacity: 0.7, // Less opacity
     width: 'auto',
     height: 'auto',
+    flexWrap : 'wrap',
   },
   chevron: {
     position: 'absolute', // Position chevron absolutely
@@ -199,6 +201,7 @@ const styles = StyleSheet.create({
   backArrow: {
     paddingLeft: 20,
     flexDirection: 'row',
+    marginTop: 20, 
     paddingRight: 30,   
   },
 });
