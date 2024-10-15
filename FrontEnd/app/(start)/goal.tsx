@@ -8,8 +8,6 @@ const [text, onChangeText] = React.useState('Useless Text');
 const [number, onChangeNumber] = React.useState('');
 const [value, setValue] = useState(props.value ?? 0);
 
-
-
 return (
     <SafeAreaView style = {styles.container}>
         <Image
@@ -62,14 +60,13 @@ return (
         </View>
         <Pressable>
             <TouchableOpacity>
-                <Link href="/(tabs)/home" asChild>
+                <Link href="/(tabs)/home" asChild replace>
                     <Pressable onPress={() => {}} style = {styles.doneButton}>
                         <Text style = {styles.doneButtonText}>Done</Text>
                     </Pressable>
                 </Link>
             </TouchableOpacity>
         </Pressable>
-
     </SafeAreaView>
 )
 }
