@@ -3,7 +3,8 @@ import React from 'react'
 import { Tabs, Redirect } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
-
+import FontAwesome from '@expo/vector-icons/FontAwesome'
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 
 const TabsLayout = () => {
@@ -22,14 +23,14 @@ const TabsLayout = () => {
         fontWeight: "bold",
       },
     }}>
-        <Tabs.Screen
-        name="home"
-        options={{
-            title: "Home",
-            headerShown: false,
-            tabBarIcon: ({color, size}) => (
-              <Ionicons name="home" size={size} color={color}/>
-            ),
+      <Tabs.Screen
+      name="home"
+      options={{
+          title: "Home",
+          headerShown: false,
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name="home" size={size} color={color}/>
+          ),
         }}
         />
         <Tabs.Screen
@@ -42,6 +43,26 @@ const TabsLayout = () => {
             ),
         }}
         />
+        <Tabs.Screen
+        name="discover"
+        options={{
+          title: 'Discover',
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+            <AntDesign name="search1" size={30} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="account"
+        options={{
+          title: 'Account',
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="user-circle-o" size={28} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   )
 }
