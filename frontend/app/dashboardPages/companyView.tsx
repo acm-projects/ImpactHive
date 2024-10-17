@@ -13,15 +13,15 @@ import {
 } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 
-const { width } = Dimensions.get('window'); // Get screen width
+const { width } = Dimensions.get('window'); 
 
 export default function CompanyPage() {
   const [isWatchlisted, setIsWatchlisted] = useState(false);
-  const [plValue, setPlValue] = useState(-0.09); // Example P/L value; change as needed
+  const [plValue, setPlValue] = useState(-0.09); 
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalType, setModalType] = useState(''); // 'buy' or 'sell'
+  const [modalType, setModalType] = useState('');
   const [inputValue, setInputValue] = useState('');
-  const [fadeAnim] = useState(new Animated.Value(0)); // Initial fade value
+  const [fadeAnim] = useState(new Animated.Value(0)); 
 
   const handleWatchlistToggle = () => {
     setIsWatchlisted((prevStatus) => !prevStatus);
@@ -76,7 +76,7 @@ export default function CompanyPage() {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           style={styles.scrollView}
-          contentContainerStyle={styles.tagsContentContainer} // Apply content container style
+          contentContainerStyle={styles.tagsContentContainer} 
         >
           <View style={styles.tagsContainer}>
             <View style={[styles.tag, { borderColor: '#D4A373' }]}>
@@ -357,15 +357,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)', 
   },
+
   modalContent: {
     backgroundColor: '#FDF8E1',
     padding: 20,
     flexDirection: 'column',
     borderRadius: 10,
     width: '80%',
-    borderWidth: 4,
+    borderWidth: 3,
     borderColor: "#C2C0B2",
   },
   modalTitle: {

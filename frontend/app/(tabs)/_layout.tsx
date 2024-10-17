@@ -4,6 +4,9 @@ import React from 'react';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import FontAwesome from '@expo/vector-icons/FontAwesome'
+import AntDesign from '@expo/vector-icons/AntDesign';
+
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -34,6 +37,27 @@ export default function TabLayout() {
           ),
         }}
       />
+
+<Tabs.Screen
+        name="discover"
+        options={{
+          title: 'Discover',
+          tabBarIcon: ({ color, focused }) => (
+            <AntDesign name="search1" size={30} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="account"
+        options={{
+          title: 'Account',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="user-circle-o" size={28} color={color} />
+          ),
+        }}
+      />
+
     </Tabs>
   );
 }

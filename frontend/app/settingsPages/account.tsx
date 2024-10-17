@@ -22,17 +22,15 @@ export default function AccountSettings() {
 
   const handleEmailSubmit = () => {
     console.log('Email submitted:', email);
-    // Add your email handling logic here
   };
 
   const handlePasswordSubmit = () => {
     console.log('Password submitted:', password);
-    // Add your password handling logic here
   };
 
   return (
     <ImageBackground 
-      source={require('@/assets/images/backgroundAccount.png')} // Path to your image
+      source={require('@/assets/images/backgroundAccount.png')} 
       style={styles.background}
       resizeMode="stretch" 
     >
@@ -60,7 +58,7 @@ export default function AccountSettings() {
                 name={emailVisible ? "chevron-up" : "chevron-down"} 
                 size={24} 
                 color="black" 
-                style={styles.chevron} // Apply absolute positioning
+                style={styles.chevron} 
               />
             </View>
           </TouchableOpacity>
@@ -94,7 +92,7 @@ export default function AccountSettings() {
                 name={passwordVisible ? "chevron-up" : "chevron-down"} 
                 size={24} 
                 color="black" 
-                style={styles.chevron} // Apply absolute positioning
+                style={styles.chevron} 
               />
             </View>
           </TouchableOpacity>
@@ -124,8 +122,9 @@ const styles = StyleSheet.create({
     width: width,
     height: height, 
     position: 'absolute', 
-    top: -20,       
-    left: 0,        
+    top: 0,       
+    left: 0,    
+    backgroundColor: "#FFF7D3"    
   },
   container: {
     flex: 1,  
@@ -143,7 +142,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   dropdown: {
-    backgroundColor: '#fdf8e1', // Background for dropdown
+    backgroundColor: '#fdf8e1',
     borderRadius: 30,
     borderWidth: 2,
     borderColor: 'black',
@@ -164,23 +163,24 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold', 
     color: 'black',
-    flex: 1, // Allow text to take remaining space
+    flex: 1, 
   },
   exampleEmail: {
-    color: 'gray', // Slightly gray color
-    fontWeight: 'normal', // Not bolded
-    opacity: 0.7, // Less opacity
+    color: 'gray', 
+    fontWeight: 'normal', 
+    opacity: 0.7, 
     width: 'auto',
     height: 'auto',
+    flexWrap : 'wrap',
   },
   chevron: {
-    position: 'absolute', // Position chevron absolutely
-    right: 15, // Space from the right edge
+    position: 'absolute', 
+    right: 15, 
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '70%', // Make sure it matches the dropdown width
+    width: '70%', 
     marginBottom: 20,
   },
   input: {
@@ -189,8 +189,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 8,
     paddingHorizontal: 10,
-    flex: 1, // Take remaining space
-    marginRight: 10, // Space between input and button
+    flex: 1, 
+    marginRight: 10, 
   },
   button: {
     justifyContent: 'center',
@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
   backArrow: {
     paddingLeft: 20,
     flexDirection: 'row',
+    marginTop: 20, 
     paddingRight: 30,   
   },
 });
