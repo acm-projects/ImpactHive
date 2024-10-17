@@ -31,9 +31,6 @@ export default function Example() {
     
     <SafeAreaView>
 
-      <View style={styles.backArrow}>
-        <Feather name="arrow-left" size={45} color="black" />
-      </View>
       <Text style={styles.title}>Notifications</Text>
 
       <View style={styles.section}>
@@ -88,26 +85,19 @@ export default function Example() {
 }
 
 const styles = StyleSheet.create({
-  backArrow: {
-    paddingLeft: 20,
-    flexDirection: 'row',
-    paddingRight: 30,
-  },
   background: {
     width: width,
-    height: height, 
-    position: 'absolute', 
-    top: -20,       
-    left: 0,        
+    height: height,        
   },
   title: {
     fontSize: 50,
     flexDirection: 'column',
+    fontWeight: 'bold',
     paddingLeft: 0,
     alignItems: 'center',
     color: 'black',
     textAlign: 'center', 
-    marginTop: 40, 
+    marginTop: 200, 
   },
   section: {
     padding: 25,

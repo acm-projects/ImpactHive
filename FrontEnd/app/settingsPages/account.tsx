@@ -34,9 +34,6 @@ export default function AccountSettings() {
       style={styles.background}
       resizeMode="stretch" 
     >
-      <View style={styles.backArrow}>
-        <Feather name="arrow-left" size={45} color="black" />
-      </View>
 
       <SafeAreaView style={styles.container}>
         <View style={styles.titleContainer}>
@@ -121,9 +118,6 @@ const styles = StyleSheet.create({
   background: {
     width: width,
     height: height, 
-    position: 'absolute', 
-    top: 0,       
-    left: 0,    
     backgroundColor: "#FFF7D3"    
   },
   container: {
@@ -139,6 +133,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 50,
     textAlign: 'center',
+    fontWeight: 'bold',
     color: 'black',
   },
   dropdown: {
@@ -195,11 +190,5 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  backArrow: {
-    paddingLeft: 20,
-    flexDirection: 'row',
-    marginTop: 20, 
-    paddingRight: 30,   
   },
 });

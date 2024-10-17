@@ -16,10 +16,8 @@ import FontAwesome from '@expo/vector-icons/FontAwesome'
 export default function Example() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
-      <View style={styles.backArrow}>
-        <Feather name="arrow-left" size={45} color="black" />
+       
         <Text style={styles.title}>Settings</Text>
-      </View>
 
       <View style={styles.profile}>
         <View style={styles.profileAvatarWrapper}>
@@ -108,17 +106,14 @@ export default function Example() {
 }
 
 const styles = StyleSheet.create({
-  backArrow: {
-    paddingLeft: 20,
-    flexDirection: 'row',
-    paddingRight: 30,
-  },
   title: {
     fontSize: 50,
     flexDirection: 'column',
-    paddingLeft: 28,
     alignItems: 'center',
     color: 'black',
+    textAlign: 'center', 
+    alignSelf: 'center',
+    fontWeight: 'bold',
   },
   profile: {
     flexDirection: 'row',

@@ -27,9 +27,7 @@ export default function Example() {
       resizeMode="stretch" 
     > 
       <SafeAreaView>
-        <View style={styles.backArrow}>
-          <Feather name="arrow-left" size={45} color="black" />
-        </View>
+        
         <Text style={styles.title}>About Us</Text>
 
         <View style={styles.card}>
@@ -47,17 +45,10 @@ export default function Example() {
 }
 
 const styles = StyleSheet.create({
-  backArrow: {
-    paddingLeft: 20,
-    flexDirection: 'row',
-    paddingRight: 30,
-  },
   background: {
     width: width,
     height: height, 
-    position: 'absolute', 
-    top: -20,       
-    left: 0,        
+    position: 'absolute',         
   },
   title: {
     fontSize: 50,
@@ -65,8 +56,9 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     alignItems: 'center',
     color: 'black',
+    fontWeight: 'bold',
     textAlign: 'center', 
-    marginTop: 40, 
+    marginTop: 200, 
   },
   card: {
     width: '90%',
