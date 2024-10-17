@@ -14,9 +14,9 @@ export default function DiscoverPage() {
         <View style={styles.searchInput}>
           <AntDesign name="search1" size={20} color="black" />
           <TextInput style={styles.searchTextInput} />
+        </View>
       </View>
-      </View>
-      
+      <View style={{backgroundColor:'black',width:width,height:2}}></View>
 
       <ScrollView> 
         {/* Watchlist Row */}
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: '#ccc',
     borderWidth: 1,
-    marginTop: 5, 
+    marginBottom: 10, 
     marginLeft: 10,
     flexDirection: 'row',
     alignItems: 'center',

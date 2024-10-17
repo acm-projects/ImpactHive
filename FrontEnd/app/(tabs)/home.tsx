@@ -205,6 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 25,
     margin: 22.5,
+    paddingTop: 10,
     borderColor: "black",
     borderWidth: 2,
     justifyContent: 'space-evenly',

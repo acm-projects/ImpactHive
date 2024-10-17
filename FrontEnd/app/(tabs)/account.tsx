@@ -18,22 +18,22 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 export default function Example() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
-
-      <Link href="../settingsPages/user-settings" asChild>
-      <TouchableOpacity style={styles.settingIcon}>
-        <Ionicons name="settings-sharp" size={38} color="black" />
-      </TouchableOpacity>
-      </Link>
-      
-      <Image
-        source={require('@/assets/images/badgePlaceholder.png')}
-        style={styles.badges}
-        resizeMode="contain" 
-      />
+      <View style = {{flexDirection: 'row', marginTop:20}}>
+        <Image
+          source={require('@/assets/images/badgePlaceholder.png')}
+          style={styles.badges}
+          resizeMode="contain" 
+        />
+        <Link href="../settingsPages/user-settings" asChild>
+        <TouchableOpacity style={styles.settingIcon}>
+          <Ionicons name="settings-sharp" size={38} color="black" />
+        </TouchableOpacity>
+        </Link>
+      </View>
 
       <View style={styles.section}>
         {/* Account Row */}
-        <Link href="../settingsPages/account" asChild>
+        <Link href="../(sub)/badges" asChild>
         <TouchableOpacity
             style={styles.row}
         >
@@ -50,7 +50,7 @@ export default function Example() {
 
 
         {/* Notifications Row */}
-        <Link href="../settingsPages/notifications" asChild>
+        <Link href="../(sub)/watch-list" asChild>
         <TouchableOpacity
           style={styles.row}
         >
@@ -63,7 +63,7 @@ export default function Example() {
         </Link>
 
         {/* Appearance Row */}
-        <Link href="../settingsPages/appearance" asChild>
+        <Link href="../(sub)/interests" asChild>
         <TouchableOpacity
           style={styles.row}
         >
@@ -95,8 +95,8 @@ export default function Example() {
 
 const styles = StyleSheet.create({
   settingIcon: {
-    paddingRight: 30,
-    paddingTop: 30,
+    position: 'absolute',
+    right: 20,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   },
   section: {
     padding: 25,
+    marginTop: 20,
   },
   row: {
     flexDirection: 'row',
@@ -149,8 +150,9 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     flexDirection: 'row',
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     justifyContent: 'space-between',
+    marginTop: -10,
   },
   infoCard: {
     width: '47%',
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
   infoTitleCentered: {
     fontSize: 16,
     textAlign: 'center', 
-    alignSelf: 'flex-start', 
+    alignSelf: 'center', 
   },
   totalCount: {
     paddingTop: 30,

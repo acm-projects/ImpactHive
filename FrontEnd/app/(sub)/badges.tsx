@@ -1,9 +1,9 @@
-import { Pressable, Image, StyleSheet, View, SafeAreaView, Text } from 'react-native'
+import { Dimensions, Pressable, Image, StyleSheet, View, SafeAreaView, Text } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { Link, Redirect } from 'expo-router'
 import goal from '../(start)/goal'
-
+const { width, height } = Dimensions.get('screen');
 const badges = () => {
     return (
         <SafeAreaView style = {styles.container}>
@@ -32,7 +32,7 @@ const badges = () => {
                         style={[styles.smallImages, {left:50}, {bottom:-15}]} />
                         <Image source={require('../../assets/images/hive.png')}
                         style={[styles.smallImages, {left:75}, {bottom:-15}]} />
-                        <Text style = {[styles.subtitleText, {position:'absolute'}, {bottom:-5}, {right:10}]}>+23 more</Text>
+                        <Text style = {[styles.smallerText, {position:'absolute'}, {bottom:0}, {right:10}]}>+23 more</Text>
                     </View>
                 </Pressable>
             </Link>
@@ -45,26 +45,26 @@ const badges = () => {
                         style={[styles.timeImages, {alignSelf: 'center'}]} />
                         <View style = {styles.smallImagesContainer}>
                             <Image source={require('../../assets/images/hive.png')}
-                            style={[styles.smallImages, {left:0}]} />
+                            style={[styles.smallImages, {left:0}, {bottom:0}]} />
                             <Image source={require('../../assets/images/hive.png')}
-                            style={[styles.smallImages, {left:25}]} />
-                            <Text style = {[styles.subtitleText, {position:'absolute'}, {bottom:12}, {right:10}]}>+23 more</Text>
+                            style={[styles.smallImages, {left:25}, {bottom:0}]} />
+                            <Text style = {[styles.smallerText, {position:'absolute'}, {alignContent:'flex-end'}, {bottom:12}, {right:10}]}>+23 more</Text>
                         </View>
                     </Pressable>
                 </Link>
                 <Link href="/(badges)/daily-challenges" asChild>
-                    <Pressable style = {styles.dailyContainer}>
+                    <Pressable style = {styles.weekContainer}>
                         <Text style = {styles.subtitleText}>Daily</Text>
                         <Text style = {styles.subtitleText}>Challenges</Text>
-                        <Image source={require('../../assets/images/hive.png')}
+                        <Image source={require('../../assets/images/react-logo.png')}
                         style={[styles.timeImages, {alignSelf: 'center'}]} />
                         <View style = {styles.smallImagesContainer}>
                             <Image source={require('../../assets/images/hive.png')}
-                            style={[styles.smallImages, {left:0}]} />
+                            style={[styles.smallImages,  {position:'absolute'}, {left:0}, {bottom:0}]} />
                             <Image source={require('../../assets/images/hive.png')}
-                            style={[styles.smallImages, {left:25}]} />
+                            style={[styles.smallImages,  {position:'absolute'}, {left:25}, {bottom:0}]} />
                         </View>
-                        <Text style = {[styles.subtitleText, {position:'absolute'}, {bottom:12}, {right:10}]}>+23 more</Text>
+                        <Text style = {[styles.smallerText, {position:'absolute'}, {bottom:12}, {right:10}]}>+23 more</Text>
                     </Pressable>
                 </Link>
             </View>
@@ -103,6 +103,11 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginLeft: 10,
+    },
+    smallerText:{
+        fontSize: 15,
+        marginLeft: 10,
+        fontWeight: 'bold',
     },
     goalImage:{
         width: 50,
@@ -157,8 +162,9 @@ const styles = StyleSheet.create({
     },
     timeImages:{
         width: 250,
-        height: 250,
+        height: 200,
         resizeMode: 'contain',
+        //backgroundColor: "#000000",
     },
     smallImagesContainer:{
         flexDirection: 'row',
