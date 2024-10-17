@@ -17,7 +17,6 @@ export default function Example() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
       <View style={styles.backArrow}>
-        <Feather name="arrow-left" size={45} color="black" />
         <Text style={styles.title}>Settings</Text>
       </View>
 
@@ -109,9 +108,11 @@ export default function Example() {
 
 const styles = StyleSheet.create({
   backArrow: {
-    paddingLeft: 20,
-    flexDirection: 'row',
-    paddingRight: 30,
+    width: '95%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center',
+
   },
   title: {
     fontSize: 50,
