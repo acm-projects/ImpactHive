@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     paddingHorizontal: 30,
+    fontFamily: "Trocchi",
   },
   tipContainer:{
     backgroundColor: "#FDF8E1",

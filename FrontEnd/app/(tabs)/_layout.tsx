@@ -5,9 +5,15 @@ import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useFonts } from 'expo-font'
+import { useEffect } from 'react'
 
 
 const TabsLayout = () => {
+  const [fontsLoaded, error] = useFonts({
+    'SpaceMono': require('../../assets/fonts/SpaceMono-Regular.ttf'),
+    'Trocchi': require('../../assets/fonts/Trocchi-Regular.ttf')
+})
   return (
     <Tabs 
     screenOptions={{

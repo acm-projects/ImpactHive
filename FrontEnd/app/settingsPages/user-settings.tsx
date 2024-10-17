@@ -16,7 +16,11 @@ import FontAwesome from '@expo/vector-icons/FontAwesome'
 export default function Example() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
+<<<<<<< HEAD
        
+=======
+      <View style={styles.backArrow}>
+>>>>>>> d5b29ae19af0634ad8a2578d39945bc6afe874cb
         <Text style={styles.title}>Settings</Text>
 
       <View style={styles.profile}>
@@ -106,6 +110,16 @@ export default function Example() {
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
+=======
+  backArrow: {
+    width: '95%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center',
+
+  },
+>>>>>>> d5b29ae19af0634ad8a2578d39945bc6afe874cb
   title: {
     fontSize: 50,
     flexDirection: 'column',
