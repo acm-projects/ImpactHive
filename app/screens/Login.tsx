@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TextInput, ActivityIndicator,Button, KeyboardAv
 import React, {useState} from 'react'
 import {FIREBASE_AUTH} from '../../FirebaseConfig'
 import{createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import { GoogleSigninButton } from '@react-native-google-signin/google-signin'
 
 const Login = () => {
     const[email,setEmail] = useState('');
@@ -44,6 +45,12 @@ const Login = () => {
     ):(<>
     <Button title = "Login" onPress = {signIn}/>
     <Button title = "Sign up" onPress = {signUp}/>
+    <GoogleSigninButton
+      style={{ width: 192, height: 48 }}
+      size={GoogleSigninButton.Size.Wide}
+      color={GoogleSigninButton.Color.Dark}
+      onPress={signIn}
+    />
     </>
     
   )}

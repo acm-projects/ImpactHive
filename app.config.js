@@ -1,4 +1,4 @@
-{
+export default{
   "expo": {
     "name": "ImpactHive",
     "slug": "ImpactHive",
@@ -11,17 +11,29 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ACM.ImpactHive",
+      "googleServicesFile": process.env.GOOGLE_SERVICES_INFOPLIST
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ACM.ImpactHive",
+      "googleServicesFile": process.env.GOOGLE_SERVICES_JSON
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fda419a3-0dd9-43f4-8dce-59edd4c81395"
+      }
     }
   }
 }
