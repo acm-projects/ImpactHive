@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     textAlign: 'center', 
     alignSelf: 'center',
     fontWeight: 'bold',
+    marginTop:40
   },
   profile: {
     flexDirection: 'row',
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
   },
   rowLabel: {
     fontSize: 25,
-    padding: 0,
+    paddingBottom: 3,
     fontWeight: '400',
   },
   rowArrow: {

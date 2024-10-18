@@ -18,7 +18,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 export default function Example() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
-      <View style = {{flexDirection: 'row', marginTop:20}}>
+      <View style = {{flexDirection: 'row', marginTop:40}}>
         <Image
           source={require('@/assets/images/badgePlaceholder.png')}
           style={styles.badges}
@@ -40,7 +40,7 @@ export default function Example() {
           <View style={styles.rowIcon}>
           <Image
             source={require('@/assets/images/badgeIcon.png')}
-            style={styles.image} // Updated style
+            style={styles.image} 
           />
           </View>
           <Text style={styles.rowLabel}>Badges</Text>
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
     width: '100%', 
     height: 180,  
     alignSelf: 'center',
+    marginTop: 60,
   },
   section: {
     padding: 25,
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   },
   rowLabel: {
     fontSize: 25,
-    padding: 0,
+    paddingBottom: 2,
     fontWeight: '400',
   },
   rowArrow: {

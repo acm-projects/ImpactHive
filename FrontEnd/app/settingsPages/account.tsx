@@ -11,7 +11,6 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Feather from '@expo/vector-icons/Feather';
 
-// Get screen dimensions
 const { width, height } = Dimensions.get('window');
 
 export default function AccountSettings() {
@@ -32,7 +31,7 @@ export default function AccountSettings() {
     <ImageBackground 
       source={require('@/assets/images/backgroundAccount.png')} 
       style={styles.background}
-      resizeMode="stretch" 
+      resizeMode="cover" 
     >
 
       <SafeAreaView style={styles.container}>
@@ -143,7 +142,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     width: '80%', 
     marginBottom: 10,
-
     elevation: 3, 
   },
   dropdownToggle: {

@@ -24,7 +24,7 @@ export default function Example() {
     <ImageBackground 
       source={require('@/assets/images/backgroundAccount.png')} 
       style={styles.background}
-      resizeMode="stretch" 
+      resizeMode="cover" 
     > 
       <SafeAreaView>
         
