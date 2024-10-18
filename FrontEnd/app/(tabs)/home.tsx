@@ -91,7 +91,7 @@ const keyExtractor = React.useCallback((item: ItemProps) => item.key, []);
     <SafeAreaView style = {styles.homeContainer}>
 
       <Text style = {styles.hello}>Hi, User!</Text>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       
       <View style = {styles.tipContainer}>
         <Text>Invest in yourself, it's the best investment you can make! </Text>

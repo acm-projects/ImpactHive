@@ -7,7 +7,7 @@ const OpeningScreen = () => {
   return (
     <View style ={styles.homeContainer}>
         <Image source = {require('@/assets/images/logo.png')} style = {{width: 340, height: 290}}/>
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
         <TouchableOpacity>
             <Link href="/(start)/log-in" asChild>
                 <Pressable style = {styles.Button}>
