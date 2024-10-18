@@ -1,17 +1,17 @@
 //ECHO is on.
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors'); // Add this line
 
 const app = express();
-const port = 3000;
+const port = 3002;
+
+app.use(cors()); // Use CORS middleware
 
 // Connect to MongoDB (ensure your MongoDB connection string is correct)
-mongoose.connect('mongodb://localhost:27017/ImpactHive', { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
-})
-.then(() => console.log("Connected to MongoDB"))
-.catch((err) => console.error("MongoDB connection error:", err));
+mongoose.connect('mongodb://localhost:27017/ImpactHive')
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((err) => console.error("MongoDB connection error:", err));
 
 // Define a schema and model for badges
 const badgeSchema = new mongoose.Schema({
@@ -58,4 +58,3 @@ app.get('/api/badges', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
-
