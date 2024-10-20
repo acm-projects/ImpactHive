@@ -2,20 +2,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); // Add this line
-const cors = require('cors'); // Add this line
 
 const app = express();
 const port = 3002;
 
 app.use(cors()); // Use CORS middleware
-const port = 3002;
-
-app.use(cors()); // Use CORS middleware
 
 // Connect to MongoDB (ensure your MongoDB connection string is correct)
-mongoose.connect('mongodb://localhost:27017/ImpactHive')
-    .then(() => console.log("Connected to MongoDB"))
-    .catch((err) => console.error("MongoDB connection error:", err));
 mongoose.connect('mongodb://localhost:27017/ImpactHive')
     .then(() => console.log("Connected to MongoDB"))
     .catch((err) => console.error("MongoDB connection error:", err));
