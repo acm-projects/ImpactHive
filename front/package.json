@@ -28,7 +28,6 @@
     "@react-native-community/slider": "^4.5.3",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.4.1",
-    "@types/react": "~18.2.79",
     "axios": "^1.7.7",
     "expo": "~51.0.28",
     "expo-checkbox": "~3.0.0",
