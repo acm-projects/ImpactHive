@@ -24,6 +24,7 @@ const StartLayout = () => {
             name = "opening-screen" 
             options = {{
                 headerShown:false,
+                animation: 'slide_from_bottom',
                 title: 'OpeningScreen'}}/>
             <Stack.Screen
             name = "log-in"

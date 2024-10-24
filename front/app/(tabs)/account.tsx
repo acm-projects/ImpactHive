@@ -18,7 +18,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 export default function Example() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
-      <View style = {{flexDirection: 'row', marginTop:40}}>
+      <View style = {{flexDirection: 'row', marginTop: -10, justifyContent:'center'}}>
         <Image
           source={require('@/assets/images/badgePlaceholder.png')}
           style={styles.badges}
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   settingIcon: {
     position: 'absolute',
     right: 20,
+    top: 30,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },

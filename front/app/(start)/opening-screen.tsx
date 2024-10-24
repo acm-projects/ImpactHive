@@ -1,9 +1,12 @@
 import { TouchableOpacity,Pressable, Image, StyleSheet, View, Text } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { Link, Redirect } from 'expo-router'
-import React from 'react'
+import LottieView from 'lottie-react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, {useEffect} from 'react'
 
 const OpeningScreen = () => {
+ 
   return (
     <View style ={styles.homeContainer}>
         <Image source = {require('@/assets/images/logo.png')} style = {{width: 340, height: 290}}/>

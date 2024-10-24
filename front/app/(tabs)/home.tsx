@@ -46,7 +46,7 @@ const renderItem = React.useCallback(
       <View style = {styles.tagContainer}>
         <View style={styles.tagTextContainer}>
           <Text style = {styles.investText2}>{item.tag}</Text>
-          <Text style = {styles.investText2}>${item.invested}</Text>
+          <Text style = {[styles.investText2, {fontFamily:'Trocchi-Bold'}]}>${item.invested}</Text>
         </View>
         <View>
         <LineChart
@@ -60,7 +60,7 @@ const renderItem = React.useCallback(
                   Math.random() * 100,
                   Math.random() * 100,
                   Math.random() * 100,
-                  Math.random() * 100
+                  Math.random() * 100,
                 ]
               }
             ]
@@ -78,15 +78,15 @@ const renderItem = React.useCallback(
             color: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
             labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
             style: {
-              borderRadius: 16
+              borderRadius: 16,
             },
             propsForDots: {
-              r: "6",
-              strokeWidth: "2",
+              r: "0",
+              strokeWidth: "1",
               stroke: "#FFFFFF"
             }
           }}
-          bezier
+          //bezier
           style={{
             marginVertical: 8,
           }}
@@ -105,14 +105,14 @@ const keyExtractor = React.useCallback((item: ItemProps) => item.key, []);
       <StatusBar style="dark" />
       
       <View style = {styles.tipContainer}>
-        <Text>Invest in yourself, it's the best investment you can make! </Text>
+        <Text style = {{fontFamily: "Trocchi",}}>Invest in yourself, it's the best investment you can make! </Text>
       </View>
 
       <View style = {styles.investContainer}>
         <Text style ={styles.investText}>Goal Investments:</Text>  
           <View style = {{flexDirection: "row", justifyContent: "space-between"}}>
             <Text style = {styles.investText2}>$1000</Text>
-            <Text style = {[styles.investText2, {fontWeight: "bold"} ,  {alignSelf:"flex-start"}]}>$3000</Text>
+            <Text style = {[styles.investText2, {fontFamily:'Trocchi-Bold'} ,  {alignSelf:"flex-end"}]}>$3000</Text>
       </View>
         <Progress.Bar 
         progress={1000/3000}
@@ -168,11 +168,12 @@ const styles = StyleSheet.create({
     paddingTop: 25,
   },
   hello: {
+    marginTop: 25,
     fontSize: 30,
     fontWeight: 'bold',
     color: 'black',
     paddingHorizontal: 30,
-    fontFamily: "Trocchi",
+    fontFamily: "Trocchi-Bold",
   },
   tipContainer:{
     backgroundColor: "#FDF8E1",
@@ -203,11 +204,13 @@ const styles = StyleSheet.create({
   },
   investText:{
     fontSize: 20,
+    fontFamily: "Trocchi",
     fontWeight: 'bold',
     color: 'black',
   },
   investText2:{
     fontSize: 20,
+    fontFamily: "Trocchi",
     color: 'black',
   },
   tagContainer:{
@@ -231,15 +234,18 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   tagTextContainer:{
+    fontFamily: "Trocchi",
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
+    paddingBottom: 10,
   },
   container: {
     flex: 1,
     backgroundColor: '#e7e7e7',
   },
   text: {
+    fontFamily: "Trocchi",
     justifyContent: 'space-evenly',
   },
   flatList: {

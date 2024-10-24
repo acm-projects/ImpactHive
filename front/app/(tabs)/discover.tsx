@@ -2,14 +2,20 @@ import React from 'react';
 import { Dimensions, ScrollView, View, Text, TextInput, StyleSheet, SafeAreaView } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import LottieView from 'lottie-react-native';
 
 const { height,width } = Dimensions.get('screen');
 export default function DiscoverPage() {
   return (
-
-
     <SafeAreaView style={styles.container}> 
       {/* Header */}
+      <LottieView 
+        style = {{width: width, height:50, alignSelf:'center',}}
+        speed={1}
+        duration={6000}
+        source={require('@/assets/animations/passing-bee.json')} 
+        autoPlay 
+        loop/>
       <View style={styles.header}>
         <View style={styles.searchInput}>
           <AntDesign name="search1" size={20} color="black" />
