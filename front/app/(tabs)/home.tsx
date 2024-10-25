@@ -161,6 +161,7 @@ const keyExtractor = React.useCallback((item: ItemProps) => item.key, []);
 
 export default home
 
+
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
