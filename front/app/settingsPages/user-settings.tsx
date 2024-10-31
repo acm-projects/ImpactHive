@@ -68,19 +68,6 @@ export default function Example() {
         </TouchableOpacity>
         </Link>
 
-        {/* Privacy and Security Row */}
-        <Link href="../settingsPages/nothing" asChild>
-        <TouchableOpacity
-          style={styles.row}
-        >
-          <View style={styles.rowIcon}>
-            <Feather name="shield" size={24} color="black" />
-          </View>
-          <Text style={styles.rowLabel}>Privacy and Security</Text>
-          <Feather name="chevron-right" size={24} color="black" style={styles.rowArrow} />
-        </TouchableOpacity>
-        </Link>
-
         {/* About Row */}
         <Link href="../settingsPages/about" asChild>
         <TouchableOpacity style={styles.row}>
