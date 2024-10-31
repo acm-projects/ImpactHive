@@ -2,7 +2,7 @@ import { FlatList, Animated, Dimensions, StyleSheet, SafeAreaView, View, Text } 
 import React, { useState } from 'react'
 import { LineChart, PieChart } from 'react-native-chart-kit';
 import SwitchSelector from "react-native-switch-selector";
-import { Image } from 'react-native';
+import { Image, ImageBackground, } from 'react-native';
 
 interface ItemProps {
   key: string;
@@ -157,7 +157,14 @@ const Dashboard = () => {
   const keyExtractor = React.useCallback((item: ItemProps) => item.key, []);
 
   return (
+  
+
 <SafeAreaView style={styles.container}>
+<ImageBackground 
+      source={require('@/assets/images/graphBG.png')} 
+      style={styles.background}
+      resizeMode="contain" 
+    >
 <View style={styles.chart}>
   {selectedChart === 'Line' && (
     <LineChart
@@ -270,6 +277,8 @@ const Dashboard = () => {
       renderItem={renderItem}
     />
   </View>
+  </ImageBackground>
+
 </SafeAreaView>
 
   );
@@ -278,6 +287,16 @@ const Dashboard = () => {
 export default Dashboard;
 
 const styles = StyleSheet.create({
+  background: {
+    position: "absolute",
+    top: 10,
+    right: 0,
+    left: 0,
+    paddingTop: height / 20,
+    width: width,
+    bottom: 0,
+    zIndex: -1,
+  },
   container: {
     flex: 1,
     backgroundColor: '#FFF7D3',
