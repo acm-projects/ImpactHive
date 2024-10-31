@@ -19,12 +19,14 @@ const RootLayout = () => {
 
     return (
         <Stack
-        screenOptions={{headerShown:false}}>
+        screenOptions={{
+            headerShown:false,
+        }}>
             <Stack.Screen 
             name = "index" 
             options = {{
                 headerShown:false,
-                animation: 'slide_from_bottom',
+                
                 title: 'index'}}/>
         </Stack>
     )

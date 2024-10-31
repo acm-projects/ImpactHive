@@ -19,12 +19,14 @@ const StartLayout = () => {
   if (!fontsLoaded&&!error) return null;
   return(
     <Stack
-        screenOptions={{headerShown:true}}>
+        screenOptions={{
+          headerShown:true,
+          animation:'slide_from_right'
+          }}>
             <Stack.Screen 
             name = "opening-screen" 
             options = {{
                 headerShown:false,
-                animation: 'slide_from_bottom',
                 title: 'OpeningScreen'}}/>
             <Stack.Screen
             name = "log-in"

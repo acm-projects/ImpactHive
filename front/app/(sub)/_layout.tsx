@@ -21,7 +21,10 @@ const SubLayout = () => {
     if (!fontsLoaded&&!error) return null;
     return (
         <Stack
-            screenOptions={{headerShown:false}}>
+            screenOptions={{
+                headerShown:false,
+                animation:'slide_from_right'
+                }}>
                 <Stack.Screen
                 name = "badges"
                 options = {{

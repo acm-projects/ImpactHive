@@ -1,37 +1,68 @@
-import { TouchableOpacity,Pressable, Image, StyleSheet, View, Text } from 'react-native'
-import { StatusBar } from 'expo-status-bar'
-import { Link, Redirect } from 'expo-router'
+import { Dimensions, TouchableOpacity, Pressable, Image, StyleSheet, View, Text } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { Link } from 'expo-router';
+import React, { useEffect, useRef } from 'react';
 import LottieView from 'lottie-react-native';
-import { useNavigation } from '@react-navigation/native';
-import React, {useEffect} from 'react'
+import Animated, { FadeIn, FadeOut, withDelay, useSharedValue, withTiming, useAnimatedStyle } from 'react-native-reanimated';
 
 const OpeningScreen = () => {
- 
-  return (
-    <View style ={styles.homeContainer}>
-        <Image source = {require('@/assets/images/logo.png')} style = {{width: 340, height: 290}}/>
-        <StatusBar style="dark" />
-        <TouchableOpacity>
-            <Link href="/(start)/log-in" asChild>
-                <Pressable style = {styles.Button}>
-                    <Text style = {styles.font}>Login</Text>
-                </Pressable>
-            </Link>
-        </TouchableOpacity>
+    const { width, height } = Dimensions.get('screen');
+    const opacity = useSharedValue(0);
 
-        <TouchableOpacity>
-            <Link href="/(start)/sign-up" asChild>
-                <Pressable onPress={() => {}}style = {styles.Button2}>
-                    <Text style = {styles.font}>Sign Up</Text>
-                </Pressable>
-            </Link>
-        </TouchableOpacity>
-        <Link href="/(tabs)/home" style ={styles.bottomText} replace> Go to Home Screen </Link>
-    </View>
-  )
-}
+    // Define the animated opacity style
+    const animatedOpacityStyle = useAnimatedStyle(() => ({
+        opacity: opacity.value,
+    }));
 
-export default OpeningScreen
+    useEffect(() => {
+        // Trigger the opacity animation with a delay
+        opacity.value = withDelay(2700, withTiming(1)); // Update to 1 for standard opacity value
+    }, []);
+
+    return (
+        <View style={styles.homeContainer}>
+            <LottieView 
+                style={{ width: width, height: 300, alignSelf: 'center' }}
+                source={require('@/assets/animations/ImpactHive Logo.json')} 
+                autoPlay 
+                loop={false}
+                duration={3000}
+            />
+            <StatusBar style="dark" />
+
+            {/* Outer wrapper with FadeIn layout animation */}
+            <Animated.View entering={FadeIn.duration(3100)}>
+                {/* Inner Animated.View with animated opacity */}
+                <Animated.View style={animatedOpacityStyle}>
+                    <Image source={require('@/assets/images/image 26.png')} style={{ width: width - 45, height: 70 }} />
+
+                    <TouchableOpacity>
+                        <Link href="/(start)/log-in" asChild>
+                            <Pressable style={styles.Button}>
+                                <Text style={styles.font}>Login</Text>
+                            </Pressable>
+                        </Link>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Link href="/(start)/sign-up" asChild>
+                            <Pressable style={styles.Button2}>
+                                <Text style={styles.font}>Sign Up</Text>
+                            </Pressable>
+                        </Link>
+                    </TouchableOpacity>
+                </Animated.View>
+            </Animated.View>
+
+            <Link href="/(tabs)/home" style={styles.bottomText} replace>
+                Go to Home Screen
+            </Link>
+        </View>
+    );
+};
+
+export default OpeningScreen;
+
 const styles = StyleSheet.create({
     homeContainer: {
         flex: 1,
@@ -56,17 +87,6 @@ const styles = StyleSheet.create({
         margin: 10,
         borderColor: "black",
         borderWidth: 2,
-        
-    },
-    ButtonPress: {
-        backgroundColor: "#FBD143",
-        paddingVertical: 15,
-        paddingHorizontal: 150,
-        borderRadius: 10,
-        margin: 10,
-        borderColor: "black",
-        borderWidth: 2,
-        opacity: 0.5,
     },
     font: {
         color: "black",
@@ -84,5 +104,4 @@ const styles = StyleSheet.create({
         color: 'blue',
         textDecorationLine: 'underline',
     },
-    
-    });
+});
