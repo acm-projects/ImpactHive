@@ -12,8 +12,11 @@ import {
 } from 'expo-router'
 import Feather from '@expo/vector-icons/Feather'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
+import {FIREBASE_AUTH} from '../../FirebaseConfig'
 
 export default function Example() {
+
+  
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF7D3' }}>
        
@@ -80,8 +83,8 @@ export default function Example() {
         </Link>
 
         {/* Log Out Button */}
-        <Link href="../settingsPages/about" asChild>
-        <TouchableOpacity
+        <Link href="../opening-screen/" asChild>
+        <TouchableOpacity 
           style={styles.logOut}
         >
           <Text style={styles.logLabel}>Log Out</Text>
