@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { LineChart, PieChart } from 'react-native-chart-kit';
 import SwitchSelector from "react-native-switch-selector";
 import { Image, ImageBackground, } from 'react-native';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 interface ItemProps {
   key: string;
@@ -60,7 +61,7 @@ const SLIDER_DATA = [
 
 const { width, height } = Dimensions.get('screen');
 
-const Dashboard = () => {
+const Dashboard = ({ totalInvested }) => {
   const [infoContainerHeight, setInfoContainerHeight] = useState(0);
   const [selectedChart, setSelectedChart] = useState('Line');
 
@@ -228,12 +229,20 @@ const Dashboard = () => {
   )}
   {selectedChart === 'Hive' && (
     <View style={styles.hiveChart}>
-    <Image 
-    source={require('../../assets/images/hiveChart.png')} 
-
-    
-  />
-  </View>
+      { totalInvested === 0 ? (
+        <Text style={styles.hiveText}>No Investments Yet. Grow as a Philanthro-Bee.</Text>
+      ) : totalInvested <= 100 && totalInvested > 0 ? (
+        <Image style={styles.hiveImage1} source={require('../../assets/images/tier1.png')} />
+      ) : totalInvested <= 500 && totalInvested > 100 ? (
+        <Image style={styles.hiveImage2} source={require('../../assets/images/tier2.png')} />
+      ) : totalInvested <= 750 && totalInvested > 500 ? (
+        <Image style={styles.hiveImage3} source={require('../../assets/images/tier3.png')} />
+      ) : totalInvested > 750 ? (
+        <Image style={styles.hiveImage4} source={require('../../assets/images/tier4.png')} />
+      ) : (
+        <Text style={styles.hiveText}>No Investments Yet. Grow as a Philanthro-Bee.</Text>
+      )}
+    </View>
   )}
 </View>
 
@@ -303,7 +312,7 @@ const styles = StyleSheet.create({
   },
   chart: {
     marginVertical: 0,
-    paddingVertical: 10,
+    paddingVertical: 2,
     alignContent: 'center',
     textAlign: 'center',
     flexDirection: 'row',
@@ -312,13 +321,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDF8E1',
     borderWidth: 2,
     borderRadius: 20,
+    paddingHorizontal: 2,
   },
   pieChart: {
     alignSelf: 'center',
     verticalAlign: 'middle',
     paddingVertical: 20,
     justifyContent: 'center',
-    
+    width: width - 30,
+    height: height / 3.532,
   },
   hiveChart: {
     alignSelf: 'center',
@@ -326,7 +337,45 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingBottom: 20,
     width: width - 30,
-    height: height/3.75,
+    height: height / 3.532,
+    overflow: "hidden",
+    borderRadius: 20,
+  },
+  hiveText: {
+   fontSize: 12,
+   justifyContent: "center",
+   textAlign: "center",
+  },
+  hiveImage1: {
+    width: width / 1.25,
+    height: height / 1.25,
+    alignContent: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    resizeMode: "center",
+    zIndex: 1,
+  },
+  hiveImage2: {
+    width: width,
+    height: height / 3,
+    zIndex: 1,
+    alignSelf: "center",
+    resizeMode: "contain",
+    aspectRatio: 1,
+  },
+  hiveImage3: {
+    width: width,
+    height: height,
+    zIndex: 1,
+    alignSelf: "center",
+    resizeMode: "center",
+  },
+  hiveImage4: {
+    width: width,
+    height: height,
+    zIndex: 1,
+    alignSelf: "center",
+    resizeMode: "center",
   },
   rowContainer: {
     position: 'absolute',

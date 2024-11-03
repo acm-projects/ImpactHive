@@ -80,7 +80,7 @@ export default function Example() {
         </Link>
 
         {/* Log Out Button */}
-        <Link href="../settingsPages/about" asChild>
+        <Link href="../(start)/opening-screen" asChild>
         <TouchableOpacity
           style={styles.logOut}
         >
