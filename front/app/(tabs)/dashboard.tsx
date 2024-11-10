@@ -1,8 +1,11 @@
 import { FlatList, Animated, Dimensions, StyleSheet, SafeAreaView, View, Text } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { LineChart, PieChart } from 'react-native-chart-kit';
 import SwitchSelector from "react-native-switch-selector";
 import { Image, ImageBackground, } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import axios from 'axios';
+
 
 interface ItemProps {
   key: string;
@@ -58,12 +61,45 @@ const SLIDER_DATA = [
   },
 ];
 
+
 const { width, height } = Dimensions.get('screen');
 
 const Dashboard = () => {
   const [infoContainerHeight, setInfoContainerHeight] = useState(0);
   const [selectedChart, setSelectedChart] = useState('Line');
+  const [totalInvestment, setTotalInvestment] = useState(0);
+  //const [updateTotal, setUpdateTotal] = useState<boolean>(false); //use in dashboard dependency list to refresh total everytime the investment is rendered
 
+   const getInvestment = async (userId: number) => {
+    try {
+        console.log('In getInvestment function');
+        const response = await axios.get('https://f330-129-110-242-224.ngrok-free.app/api/investments', {params:{ userId }});
+        //setUpdateInfo(!updateInfo);
+        console.log('Investment total:', response.data);
+
+        return response.data
+    } catch (error) {
+        // Check if error is an AxiosError
+        if (axios.isAxiosError(error)) {
+          console.error('From getInvestment: Error getting investment:', error.response ? error.response.request : error.message);
+      } else {
+          console.error('Unexpected error:', error);
+      }
+    }
+  };
+  /*useEffect(() => {
+    getInvestment(0)
+      .then((res) => {
+        setTotalInvestment(res); // Update state with API result
+      });
+  }, []);*/
+  useFocusEffect(
+    React.useCallback(() => {
+      getInvestment(0).then((res) => {
+        setTotalInvestment(res); // Update the state with the current total
+      });
+    }, [])
+  );
 
   const data = [
     {
@@ -239,7 +275,7 @@ const Dashboard = () => {
 
   <View style={styles.rowContainer}>
     <View style={styles.totalContainer}>
-      <Text>$1000</Text>
+      <Text>{totalInvestment}</Text>
     </View>
     <View style={styles.switchSelector}>
       <SwitchSelector
