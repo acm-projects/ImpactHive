@@ -31,12 +31,12 @@ const StartLayout = () => {
             <Stack.Screen
             name = "log-in"
             options = {{
-                headerShown:true,
+                headerShown:false,
                 title: 'LogIn'}}/>
             <Stack.Screen
             name = "sign-up"
             options = {{
-                headerShown:true,
+                headerShown:false,
                 title: 'SignUp'}}/>
             <Stack.Screen
             name = "goal"

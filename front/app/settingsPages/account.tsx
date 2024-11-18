@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     color: 'black',
+    fontFamily: 'Trocchi',
   },
   dropdown: {
     backgroundColor: '#fdf8e1',

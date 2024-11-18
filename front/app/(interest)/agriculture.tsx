@@ -10,43 +10,43 @@ interface ItemProps {
 const COMPANY_DATA = [
     {
         key: '1',
-        name: 'Company 1',
-        image: 'https://reactjs.org/logo-og.png',
+        name: 'Corteva',
+        image: 'https://eu-images.contentstack.com/v3/assets/blte5a51c2d28bbcc9c/blt7e5c907dcd54a4eb/6487157973843f2dc875036b/CortevaLogo_HorizontalBlue.jpg?width=1280&auto=webp&quality=95&format=jpg&disable=upscale',
     },
     {
         key: '2',
-        name: 'Company 2',
-        image: 'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        name: 'John Deere',
+        image: 'https://i.pinimg.com/736x/7f/c5/bd/7fc5bd1b54decf903b6478061724b09a.jpg',
     },
     {
         key: '3',
-        name: 'Company 3',
-        image: 'https://reactjs.org/logo-og.png',
+        name: 'Bayer AG',
+        image: 'https://vegetablegrowersnews.com/wp-content/uploads/2021/11/Bayer-Crop-Science-logo-e1674161171374.png',
     },
     {
         key: '4',
-        name: 'Company 4',
-        image: 'https://reactjs.org/logo-og.png',
+        name: 'Syngenta',
+        image: 'https://www.nurserymag.com/fileuploads/image/2024/06/25/syngenta.jpg',
     },
     {
         key: '5',
-        name: 'Company 5',
-        image: 'https://reactjs.org/logo-og.png',
+        name: 'Trimble',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSasSaXcZQavU_wE_HeDoAhtUsDYvCH0E1kzA&s',
     },
     {
         key: '6',
-        name: 'Company 6',
-        image: 'https://reactjs.org/logo-og.png',
+        name: 'Indigo AG',
+        image: 'https://carbonherald.com/wp-content/uploads/2024/03/Indigo-AG-800x500.png',
     },
     {
         key: '7',
-        name: 'Company 7',
-        image: 'https://reactjs.org/logo-og.png',
+        name: 'Nutrien',
+        image: 'https://mainstreamcorporatetraining.com/wp-content/uploads/2021/01/Nutrien.png',
     },
     {
         key: '8',
-        name: 'Company 8',
-        image: 'https://reactjs.org/logo-og.png',
+        name: 'Pivot Bio',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ki-tUtRAI3VEFwXKO9q5zzxxY6LzwPN76A&s',
     },
 ];
 

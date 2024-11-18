@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
   rowLabel: {
     fontSize: 25,
     paddingBottom: 2,
+    fontFamily: 'Trocchi',
     fontWeight: '400',
   },
   rowArrow: {
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
   logLabel: {
     fontSize: 25,
     paddingVertical: 7,
+    fontFamily: 'Trocchi',
     fontWeight: '400',
     color: 'red',
   },
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
   },
   infoTitle: {
     fontSize: 16,
+    fontFamily: 'Trocchi',
     alignContent: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -175,12 +178,14 @@ const styles = StyleSheet.create({
   },
   infoTitleCentered: {
     fontSize: 16,
+    fontFamily: 'Trocchi',
     textAlign: 'center', 
     alignSelf: 'center', 
   },
   totalCount: {
     paddingTop: 30,
     fontSize: 20,
+    fontFamily: 'Trocchi',
     alignSelf: 'center',
     flexWrap : 'wrap',
   },

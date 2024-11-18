@@ -55,7 +55,7 @@ const renderItem = React.useCallback(
             datasets: [
               {
                 data: [
-                  Math.random() * 100,
+                  1,
                   Math.random() * 100,
                   Math.random() * 100,
                   Math.random() * 100,
@@ -68,7 +68,7 @@ const renderItem = React.useCallback(
           width={width-50}
           height={220}
           yAxisLabel="$"
-          yAxisSuffix="k"
+          yAxisSuffix=""
           yAxisInterval={1} // optional, defaults to 1
           chartConfig={{
             backgroundColor: "#FDF8E1",

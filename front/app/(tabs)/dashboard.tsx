@@ -12,12 +12,12 @@ interface ItemProps {
 
 const SLIDER_DATA = [
   {
-    key: '1',
-    title: 'Company 1',
+    key: '45',
+    title: 'Tesla',
     tag: 'tag 1',
   },
   {
-    key: '2', 
+    key: '45', 
     title: 'Company 2',
     tag: 'tag 1',
   },
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     
   },
   infoBoxContainer: {
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     alignContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -182,6 +182,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     margin: 10,
+    fontFamily: 'Trocchi',
   },
   infoCompanyContainer: {
     margin: 10,
@@ -192,6 +193,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     margin: 10,
+    fontFamily: 'Trocchi',
   },
   infoTagContainer:{
     margin: 3,
@@ -205,6 +207,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: 'black',
     margin: 10,
+    fontFamily: 'Trocchi',
   },
   flatList: {
     flex: 1,
