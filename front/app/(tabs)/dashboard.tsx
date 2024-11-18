@@ -1,17 +1,21 @@
-import { FlatList, Animated, Dimensions, StyleSheet, SafeAreaView, View, Text } from 'react-native'
+import { FlatList, Animated, Dimensions, StyleSheet, SafeAreaView, View, Text, Button, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import { LineChart, PieChart } from 'react-native-chart-kit';
+import { Link } from 'expo-router'
 import SwitchSelector from "react-native-switch-selector";
 import { Image, ImageBackground, } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import axios from 'axios';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
 
 
 interface ItemProps {
-  key: string;
-  title: string;
-  tag: string;
-  amountInvested: number
+  userId: Number;
+  amount: Number;
+  company: string;
+  //amountInvested: number
 }
 
 const SLIDER_DATA = [
@@ -68,6 +72,8 @@ const Dashboard = () => {
   const [infoContainerHeight, setInfoContainerHeight] = useState(0);
   const [selectedChart, setSelectedChart] = useState('Line');
   const [totalInvestment, setTotalInvestment] = useState(0);
+  const [investmentsList, setInvestmentsList] = useState([]);  // New state for actual investments data
+
   //const [updateTotal, setUpdateTotal] = useState<boolean>(false); //use in dashboard dependency list to refresh total everytime the investment is rendered
 
    const getInvestment = async (userId: number) => {
@@ -87,6 +93,29 @@ const Dashboard = () => {
       }
     }
   };
+  // Fetch investments data from the database
+  const getInvestmentsList = async () => {
+    try {
+      const response = await axios.get('https://f330-129-110-242-224.ngrok-free.app/api/investmentsList');
+      setInvestmentsList(response.data);  // Update state with fetched investments
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Error fetching investments list:', error.response ? error.response.data : error.message);
+      } else {
+        console.error('Unexpected error for investments list:', error);
+      }
+    }
+  };
+
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getInvestmentsList().then((res) => {
+        setInvestmentsList(res); // Update the state with the current total
+      });
+    }, [])
+  );
   /*useEffect(() => {
     getInvestment(0)
       .then((res) => {
@@ -145,15 +174,15 @@ const Dashboard = () => {
       return (
         <View style={styles.infoBoxContainer}>
           <View style={styles.infoPerContainer}>
-            <Text style={styles.infoPerText}>{item.key}</Text>
+            <Text style={styles.infoPerText}>${item.amount.toString()}</Text>
           </View>
 
           <View style={styles.infoCompanyContainer}>
-            <Text style={styles.infoCompanyText}>{item.title}</Text>
+            <Text style={styles.infoCompanyText}>{item.company}</Text>
           </View>
 
           <View style={styles.infoTagContainer}>
-            <Text style={styles.infoTagText}>{item.tag}</Text>
+            <Text style={styles.infoTagText}>Tag 1</Text>
             <Text style={styles.infoTagText}>Tag 2</Text>
             <Text style={styles.infoTagText}>Tag 3</Text>
           </View>
@@ -264,18 +293,35 @@ const Dashboard = () => {
   )}
   {selectedChart === 'Hive' && (
     <View style={styles.hiveChart}>
-    <Image 
-    source={require('../../assets/images/hiveChart.png')} 
-
-    
-  />
+     { totalInvestment === 0 ? (
+      <Text style={styles.hiveText}>No Investments Yet. Grow as a Philanthro-Bee.</Text>
+    ) : totalInvestment <= 100 && totalInvestment > 0 ? (
+      <Image style={styles.hiveImage1} source={require('../../assets/images/tier1.png')} />
+    ) : totalInvestment <= 500 && totalInvestment > 100 ? (
+      <Image style={styles.hiveImage2} source={require('../../assets/images/tier2.png')} />
+    ) : totalInvestment <= 750 && totalInvestment > 500 ? (
+      <Image style={styles.hiveImage3} source={require('../../assets/images/tier3.png')} />
+    ) : totalInvestment > 750 ? (
+      <Image style={styles.hiveImage4} source={require('../../assets/images/tier4.png')} />
+    ) : (
+      <Text style={styles.hiveText}>No Investments Yet. Grow as a Philanthro-Bee.</Text>
+    )}
+  
   </View>
   )}
 </View>
 
   <View style={styles.rowContainer}>
+  <Link href="../(sub)/chatbot" asChild>
+        <TouchableOpacity style={styles.chatbotButton}>
+          <View style={styles.rowIcon}>
+            <MaterialCommunityIcons name="bee" size={24} color="black" />
+          </View>
+          <Text style={styles.rowText}>Chat With Polli</Text>
+        </TouchableOpacity>
+      </Link>
     <View style={styles.totalContainer}>
-      <Text>{totalInvestment}</Text>
+      <Text>${totalInvestment}</Text>
     </View>
     <View style={styles.switchSelector}>
       <SwitchSelector
@@ -296,8 +342,8 @@ const Dashboard = () => {
     }}
   >      
     <FlatList
-      data={SLIDER_DATA}
-      keyExtractor={keyExtractor}
+      data={investmentsList}
+      keyExtractor={(item) => item.userId.toString()}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={true}
       onScroll={Animated.event(
@@ -333,13 +379,26 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: -1,
   },
+  rowIcon: {
+    width: 26,
+    height: 26,
+    marginRight: 0,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    alignSelf: 'flex-start',
+  },
+  rowText: {
+    marginRight: 5,
+    
+  },
   container: {
     flex: 1,
     backgroundColor: '#FFF7D3',
   },
   chart: {
     marginVertical: 0,
-    paddingVertical: 10,
+    paddingVertical: 2,
     alignContent: 'center',
     textAlign: 'center',
     flexDirection: 'row',
@@ -354,7 +413,8 @@ const styles = StyleSheet.create({
     verticalAlign: 'middle',
     paddingVertical: 20,
     justifyContent: 'center',
-    
+    width: width - 30,
+    height: height / 3.532,
   },
   hiveChart: {
     alignSelf: 'center',
@@ -362,7 +422,45 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingBottom: 20,
     width: width - 30,
-    height: height/3.75,
+    height: height/3.532,
+    overflow: "hidden",
+    borderRadius: 20,
+  },
+  hiveText: {
+   fontSize: 12,
+   justifyContent: "center",
+   textAlign: "center",
+  },
+  hiveImage1: {
+    width: width / 1.25,
+    height: height / 1.25,
+    alignContent: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    resizeMode: "center",
+    zIndex: 1,
+  },
+  hiveImage2: {
+    width: width,
+    height: height / 3,
+    zIndex: 1,
+    alignSelf: "center",
+    resizeMode: "contain",
+    aspectRatio: 1,
+  },
+  hiveImage3: {
+    width: width,
+    height: height,
+    zIndex: 1,
+    alignSelf: "center",
+    resizeMode: "center",
+  },
+  hiveImage4: {
+    width: width,
+    height: height,
+    zIndex: 1,
+    alignSelf: "center",
+    resizeMode: "center",
   },
   rowContainer: {
     position: 'absolute',
@@ -396,6 +494,20 @@ const styles = StyleSheet.create({
     borderColor: "#FBD143",
     zIndex: 2,
     marginTop: 10,
+  },
+  chatbotButton: {
+    justifyContent: 'center',
+    alignItems: 'center',  // Center items vertically
+    flexDirection: 'row',  // Align items horizontally
+    alignSelf: 'flex-end',
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    width: "40%",
+    borderRadius: 32,
+    transform: [{ scale: 0.8 }],
+    borderColor: "#FBD143",
+    backgroundColor: "#FBD143",  // Correct background color
+    zIndex: 2,
   },
   infoContainer: {
     backgroundColor: "#FFF4BD",

@@ -19,7 +19,7 @@ const StartLayout = () => {
   if (!fontsLoaded&&!error) return null;
   return(
     <Stack
-        screenOptions={{headerShown:true}}>
+        screenOptions={{headerShown:false}}>
             <Stack.Screen 
             name = "opening-screen" 
             options = {{

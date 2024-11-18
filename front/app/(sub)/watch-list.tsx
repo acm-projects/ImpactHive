@@ -1,117 +1,101 @@
 import { StyleSheet, Animated, Image, Dimensions, FlatList, View, SafeAreaView, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import axios from 'axios';
+require('dotenv').config();
+
+
 
 interface ItemProps {
-    key: string;
-    name: string;
-    image: string;
-    tags: string;
-    newsTitle: string;
-    newsBody: string;
+    //key: string;
+    //name: string;
+    //image: string;
+    //tags: string;
+    //newsTitle: string;
+    //newsBody: string;
+    company: String;
 }
 
 const COMPANY_DATA = [
     {
-        key: '1',
-        name: 'Company 1',
-        image: 'https://reactjs.org/logo-og.png',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 1',
     },
     {
-        key: '2',
-        name: 'Company 2',
-        image: 'https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 2',
     },
     {
-        key: '3',
-        name: 'Company 3',
-        image: 'https://reactjs.org/logo-og.png',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 3',
     },
     {
-        key: '4',
-        name: 'Company 4',
-        image: 'https://reactjs.org/logo-og.png',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 4',
     },
     {
-        key: '5',
-        name: 'Company 5',
-        image: 'https://reactjs.org/logo-og.png',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 5',
     },
     {
-        key: '6',
-        name: 'Company 6',
-        image: 'https://reactjs.org/logo-og.png',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 6',
     },
     {
-        key: '7',
-        name: 'Company 7',
-        image: 'https://reactjs.org/logo-og.png',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 7',
     },
     {
-        key: '8',
-        name: 'Company 8',
-        image: 'https://reactjs.org/logo-og.png',
-        tags: 'tag 1',
-        newsTitle: 'Sensationalist Title',
-        newsBody: 'someone just died',
+        company: 'Company 8',
     },
 ];
 
 const {width, height} = Dimensions.get('screen');
 
 const WatchList = () => {
+const [watchlistList, setWatchlistList] = useState([]);  // New state for actual watchlist data
+let ngrok_key = process.env.NGROK_KEY || "";
+
+// Fetch watchlist data from the database
+const getWatchlistList = async () => {
+    try {
+      const response = await axios.get('https://' + ngrok_key + '.ngrok-free.app/api/watchlistList');
+      setWatchlistList(response.data);  // Update state with fetched watchlist items
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Error fetching investments list:', error.response ? error.response.data : error.message);
+      } else {
+        console.error('Unexpected error for investments list:', error);
+      }
+    }
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getWatchlistList().then((res) => {
+        setWatchlistList(res); // Update the state with the current total
+      });
+    }, [])
+  );
+
 const scrollX = React.useRef(new Animated.Value(0)).current; 
 const renderItem = React.useCallback(({item}: {item: ItemProps}) => {
     return (
         <View style = {styles.companyContainer}>
-            <Image source={{uri: item.image}}
-                style={styles.imageContainer} />
-            <View style = {styles.newsAndInfoContainer}>
-                <View style = {styles.infoContainer}>
-                    <View style = {styles.companyNameContainer}>
-                        <Text style = {styles.companyNameText}>{item.name}</Text>
-                    </View>
-                    <View style = {styles.tagContainer}>
-                        <Text style = {styles.tagText}>{item.tags}</Text>
-                        <Text style = {styles.tagText}>Tag 2</Text>
-                    </View>
-                    <View style = {styles.newsContainer}>
-                        <Text style = {styles.newsTitle}>{item.newsTitle}</Text>
-                        <Text style = {styles.newsText}>{item.newsBody}</Text>
-                    </View>
+        <Image source={{uri: 'https://www.logodesignlove.com/images/monograms/tesla-symbol.jpg'}}
+            style={styles.imageContainer} />
+        <View style = {styles.newsAndInfoContainer}>
+            <View style = {styles.infoContainer}>
+                <View style = {styles.companyNameContainer}>
+                    <Text style = {styles.companyNameText}>{item.company}</Text>
                 </View>
             </View>
         </View>
+    </View>
     );
 }, [width],
 );
-const keyExtractor = React.useCallback((item: ItemProps) => item.key, []);
+const keyExtractor = React.useCallback((item: ItemProps) => item.company, []);
 
 return (
     <SafeAreaView style = {styles.container}>
         <Text style = {styles.nameText}>Watch List</Text>
         <FlatList
-        data = {COMPANY_DATA}
+        data = {watchlistList}
         keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={true}

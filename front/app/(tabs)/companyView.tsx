@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 //import { addInvestment, getTotalInvestment } from '../../backend/investments.js';
 import axios from 'axios';
+require('dotenv').config();
 
 import {
   StyleSheet,
@@ -30,7 +31,7 @@ export default function CompanyPage() {
     const [volume, setVolume] = useState(0); 
   //Gemini Pulls
 
-  let API_KEY = "AIzaSyCe-lC-7bdox199fwrE3IEZEFasSZYJYUM"
+  let API_KEY = "AIzaSyCZ09a6l_jBtKNI3N2hcxG9Gi5UI5UcjX8"
 
   async function runNews() {
   try {
@@ -66,7 +67,7 @@ let PolygonAPI_KEY = 'EY5HzreFOYpsDaJJx8A1kox2O42IKosm';  // Replace with your P
 
   async function runCurrentPrice(ticker: string) {
     try {
-            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=EY5HzreFOYpsDaJJx8A1kox2O42IKosm`;
+            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=bVx2UX5nrRFoItKrU32zKlSXWcuphGUb`;
             const response = await fetch(url);
             
             // Check if the response is OK (status 200)
@@ -91,7 +92,7 @@ let PolygonAPI_KEY = 'EY5HzreFOYpsDaJJx8A1kox2O42IKosm';  // Replace with your P
   }
   async function runHigh(ticker: string) {
     try {
-            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=EY5HzreFOYpsDaJJx8A1kox2O42IKosm`;
+            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=bVx2UX5nrRFoItKrU32zKlSXWcuphGUb`;
             const response = await fetch(url);
             
             // Check if the response is OK (status 200)
@@ -116,7 +117,7 @@ let PolygonAPI_KEY = 'EY5HzreFOYpsDaJJx8A1kox2O42IKosm';  // Replace with your P
   }
   async function runLow(ticker: string) {
     try {
-            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=EY5HzreFOYpsDaJJx8A1kox2O42IKosm`;
+            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=bVx2UX5nrRFoItKrU32zKlSXWcuphGUb`;
             const response = await fetch(url);
             
             // Check if the response is OK (status 200)
@@ -141,7 +142,7 @@ let PolygonAPI_KEY = 'EY5HzreFOYpsDaJJx8A1kox2O42IKosm';  // Replace with your P
   }
   async function runVolume(ticker: string) {
     try {
-            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=EY5HzreFOYpsDaJJx8A1kox2O42IKosm`;
+            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=bVx2UX5nrRFoItKrU32zKlSXWcuphGUb`;
             const response = await fetch(url);
             
             // Check if the response is OK (status 200)
@@ -166,7 +167,7 @@ let PolygonAPI_KEY = 'EY5HzreFOYpsDaJJx8A1kox2O42IKosm';  // Replace with your P
   }
   async function runPercentChange(ticker: string) {
     try {
-            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=EY5HzreFOYpsDaJJx8A1kox2O42IKosm`;
+            const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-01-09/2023-01-09?apiKey=bVx2UX5nrRFoItKrU32zKlSXWcuphGUb`;
             const response = await fetch(url);
             
             // Check if the response is OK (status 200)
@@ -250,6 +251,7 @@ useEffect(() => {
 
   const handleWatchlistToggle = () => {
     setIsWatchlisted((prevStatus) => !prevStatus);
+    addWatchlist(company); // for now, only adds does not toggle - fix this later
   };
 
   const handleBuySellPress = (type:string) => {
@@ -277,15 +279,35 @@ useEffect(() => {
     setInputValue(value);
   };
 
+  
   const addInvestment = async (amount: number) => {
     try {
         console.log(amount);
-        const response = await axios.post('https://f330-129-110-242-224.ngrok-free.app/api/investments', { amount });
+        const response = await axios.post('https://f330-129-110-242-224.ngrok-free.app/api/investments', { amount, company });
         console.log('Investment added:', response.data);
     } catch (error) {
         // Check if error is an AxiosError
         if (axios.isAxiosError(error)) {
           console.error('From addInvestment: Error adding investment:', error.response ? error.response.request : error.message);
+          console.error('Axios error details:');
+            console.error('Message:', error.message); // Detailed message about the error
+            console.error('Config:', error.config); // Axios config used for the request
+            console.error('Response:', error.response); // Response from the server (if any)
+            console.error('Request:', error.request); // Request that was sent (if any)
+      } else {
+          console.error('Unexpected error:', error);
+      }
+    }
+  };
+
+  const addWatchlist = async (company: string) => {
+    try {
+        const response = await axios.post('https://f330-129-110-242-224.ngrok-free.app/api/watchlist', { company });
+        console.log('Watchlist added:', response.data);
+    } catch (error) {
+        // Check if error is an AxiosError
+        if (axios.isAxiosError(error)) {
+          console.error('From addWatchlist: Error adding watchlist:', error.response ? error.response.request : error.message);
           console.error('Axios error details:');
             console.error('Message:', error.message); // Detailed message about the error
             console.error('Config:', error.config); // Axios config used for the request
@@ -432,7 +454,7 @@ useEffect(() => {
                 <TouchableOpacity style={styles.cancelButton} onPress={closeModal}>
                   <Text style={styles.modalButtonText}>Cancel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.confirmButton} onPress={() => {addInvestment(parseFloat(inputValue)); closeModal}}>
+                <TouchableOpacity style={styles.confirmButton} onPress={() => {addInvestment(parseFloat(inputValue)); closeModal();}}> 
                   <Text style={styles.modalButtonText}>Confirm</Text>
                 </TouchableOpacity>
               </View>
@@ -459,6 +481,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 50,
     fontWeight: 'bold',
+    fontFamily: "Trocchi",
     color: 'black',
     textAlign: 'center',
     marginBottom: 10,
@@ -621,6 +644,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 24,
     fontWeight: 'bold',
+    fontFamily: "Trocchi",
     marginLeft: 12,
     marginBottom: 20,
     justifyContent: 'flex-start',

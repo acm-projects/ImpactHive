@@ -13,6 +13,7 @@ npm-debug.*
 *.orig.*
 web-build/
 expo-env.d.ts
+.env
 .DS_Store
 ../.DS_Store
 # @end expo-cli

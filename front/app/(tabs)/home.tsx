@@ -101,11 +101,11 @@ const keyExtractor = React.useCallback((item: ItemProps) => item.key, []);
   return (
     <SafeAreaView style = {styles.homeContainer}>
 
-      <Text style = {styles.hello}>Hi, User!</Text>
+      <Text style = {styles.hello}>Hi, Ifrah!</Text>
       <StatusBar style="dark" />
       
       <View style = {styles.tipContainer}>
-        <Text>Invest in yourself, it's the best investment you can make! </Text>
+        <Text>Consistency is key! Small, regular investments often outperform large, infrequent ones over time. Consider setting up automatic contributions to take advantage of dollar-cost averaging and grow your portfolio steadily, even in volatile market </Text>
       </View>
 
       <View style = {styles.investContainer}>

@@ -23,7 +23,7 @@ const OpeningScreen = () => {
                 </Pressable>
             </Link>
         </TouchableOpacity>
-        <Link href="/(tabs)/home" style ={styles.bottomText} replace> Go to Home Screen </Link>
+        
     </View>
   )
 }
